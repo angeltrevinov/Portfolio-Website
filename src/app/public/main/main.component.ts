@@ -1,20 +1,19 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
+// ======================= MAIN ============================
+/*
+* This holds the main page with the information about myself,
+* My projects, experience, languages i work with and so on.
+* This is the first page the normal user would see
+* */
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-
-  @ViewChild('Logo', {static: true}) Logo: ElementRef;
-
+  // -------------------------------------------------------
   constructor() { }
-
-  ngOnInit() {
-    for(let i = 0; i < this.Logo.nativeElement.childNodes.length; i++) {
-      console.log('Letter' + i + ' is ' + this.Logo.nativeElement.childNodes[i].getTotalLength());
-    }
-  }
-
+  // -------------------------------------------------------
+  ngOnInit() {}
 }

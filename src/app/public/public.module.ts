@@ -5,6 +5,7 @@ import {PublicRoutingModule} from './public-routing.module';
 import { CoverComponent } from './main/cover/cover.component';
 import { ProjectCardComponent } from './main/project-card/project-card.component';
 import { ExperienceCardComponent } from './main/experience-card/experience-card.component';
+import { LangFrameCardComponent } from './main/lang-frame-card/lang-frame-card.component';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { ExperienceCardComponent } from './main/experience-card/experience-card.
     CoverComponent,
     ProjectCardComponent,
     ExperienceCardComponent,
+    LangFrameCardComponent,
   ],
   imports: [
     CommonModule,

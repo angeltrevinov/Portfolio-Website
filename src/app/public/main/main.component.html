@@ -1,11 +1,27 @@
 <app-cover></app-cover>
 
-<nav class="navbar navbar-dark bg-color">
+<nav class="navbar navbar-dark bg-color navbar-expand-lg">
   <span class="navbar-brand mb-0 h1">ANGEL TREVINO</span>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="#Projects">Projects</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#Experience">Experience</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#LangFrame">Languages & Frameworks</a>
+      </li>
+    </ul>
+  </div>
 </nav>
 
 <!-- PROJECTS -->
-<div class="container">
+<div class="container" id="Projects">
   <h2>Projects</h2>
   <hr>
   <div class="carousel">
@@ -21,7 +37,7 @@
 </div>
 
 <!-- EXPERIENCE -->
-<div class="container">
+<div class="container" id="Experience">
   <h2>Experience</h2>
   <hr>
   <div class="carousel">
@@ -39,12 +55,22 @@
 </div>
 
 <!-- Languages -->
-<div class="container">
+<div class="container" id="LangFrame">
   <h2>Languages & Frameworks</h2>
   <hr>
-  <div class="row">
-    <div class="col">
-      another shit
-    </div>
+  <div class="carousel">
+    <app-lang-frame-card></app-lang-frame-card>
+    <app-lang-frame-card></app-lang-frame-card>
+    <app-lang-frame-card></app-lang-frame-card>
+    <app-lang-frame-card></app-lang-frame-card>
+    <app-lang-frame-card></app-lang-frame-card>
+    <app-lang-frame-card></app-lang-frame-card>
+    <app-lang-frame-card></app-lang-frame-card>
+    <app-lang-frame-card></app-lang-frame-card>
+    <app-lang-frame-card></app-lang-frame-card>
+    <app-lang-frame-card></app-lang-frame-card>
+    <app-lang-frame-card></app-lang-frame-card>
+    <app-lang-frame-card></app-lang-frame-card>
+    <app-lang-frame-card></app-lang-frame-card>
   </div>
 </div>

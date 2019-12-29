@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 
-// ======================= MAIN ============================
+// ======================= MAIN PAGE =======================
 /*
 * This holds the main page with the information about myself,
 * My projects, experience, languages i work with and so on.

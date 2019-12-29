@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 
+/* BACKGROUND CONTAINER */
 .cover {
   width: 100%;
   height: 100vh;
@@ -13,7 +14,8 @@
   background-size: cover;
 }
 
-
+/* ====================================================== */
+/* LOGO ANIMATION */
 #Logo {
   position: absolute;
   top: 50%;
@@ -104,3 +106,4 @@
     fill: white;
   }
 }
+/* ====================================================== */

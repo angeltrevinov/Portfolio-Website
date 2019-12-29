@@ -1,7 +1,3 @@
-.bg-color {
-  background-color: #030A10;
-}
-
 .container {
   margin-top: 15px;
 }
@@ -18,4 +14,5 @@
   top: 0;
   z-index: 999;
   padding-bottom: 10px;
+  background-color: #030A10;
 }

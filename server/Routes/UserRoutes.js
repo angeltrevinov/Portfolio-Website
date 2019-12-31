@@ -1,6 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const config = require('../../config');
 
 // ==================== USER ROUTES ========================
 /*
@@ -9,11 +10,14 @@ const jwt = require('jsonwebtoken');
 * */
 const router = express.Router();
 
+/* MODELS */
+// ---------------------------------------------------------
 const User = require('../Models/User');
 
 /*
 * LOG IN - to give access to admin users for the app
 * */
+// ---------------------------------------------------------
 router.post('/login', (req, res, next) => {
 
   if(
@@ -59,7 +63,7 @@ router.post('/login', (req, res, next) => {
       const token = jwt.sign({
         strEmail: fetchUser.strEmail,
         _id: fetchUser._id
-      }, 'secret_here', {expiresIn: '1day'});
+      }, config.SECRETKEY, {expiresIn: '1day'});
 
       return res.status(200).json({
         token: token

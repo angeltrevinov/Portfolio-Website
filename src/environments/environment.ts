@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  PortfolioAPI: 'localhost:8080/api'
+  PortfolioAPI: 'http://localhost:8080/api'
 };
 
 /*

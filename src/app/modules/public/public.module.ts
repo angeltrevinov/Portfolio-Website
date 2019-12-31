@@ -8,7 +8,8 @@ import { ExperienceCardComponent } from './main/experience-card/experience-card.
 import { LangFrameCardComponent } from './main/lang-frame-card/lang-frame-card.component';
 import { AdmingLogInComponent } from './adming-log-in/adming-log-in.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import {UserService} from '../service/user.service';
+import {UserService} from '../../service/user.service';
+import {LoginGuard} from '../../guards/login.guard';
 
 // ========================== PUBLIC MODULE ================
 /*
@@ -29,5 +30,6 @@ import {UserService} from '../service/user.service';
     PublicRoutingModule,
     ReactiveFormsModule
   ],
+  providers: [LoginGuard]
 })
 export class PublicModule { }

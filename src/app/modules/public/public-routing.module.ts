@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {MainComponent} from './main/main.component';
 import {AdmingLogInComponent} from './adming-log-in/adming-log-in.component';
+import {AdminGuard} from '../../guards/admin.guard';
+import {LoginGuard} from '../../guards/login.guard';
 
 // ======================= PUBLIC ROUTING ==================
 /*
@@ -13,7 +15,11 @@ import {AdmingLogInComponent} from './adming-log-in/adming-log-in.component';
 * */
 const routes: Routes = [
   { path: '', component: MainComponent },
-  { path: 'Adminlogin', component: AdmingLogInComponent }
+  {
+    path: 'Adminlogin',
+    component: AdmingLogInComponent,
+    canActivate: [LoginGuard]
+  }
 ];
 
 @NgModule({

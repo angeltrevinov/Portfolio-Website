@@ -1,5 +1,5 @@
 <div class="page">
-  <form [formGroup]="loginForm" class="FormContainer" (submit)="onLogin()">
+  <form [formGroup]="loginForm" (submit)="onLogin()" class="FormContainer">
     <!-- Email Control -->
     <div class="form-group row">
       <label for="Email" class="col-3 col-form-label">Email</label>
@@ -21,8 +21,6 @@
       </div>
     </div>
 
-    <div class="row">
-      <button type="submit" class="btn btn-outline-primary">Login</button>
-    </div>
+    <button type="submit" class="btn btn-outline-primary" [disabled]="loginForm.invalid">Login</button>
   </form>
 </div>

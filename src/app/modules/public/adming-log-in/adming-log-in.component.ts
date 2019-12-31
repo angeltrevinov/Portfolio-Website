@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {UserService} from '../../service/user.service';
+import {UserService} from '../../../service/user.service';
+import {Router} from '@angular/router';
 
 // ====================== ADMIN PAGE =======================
 /**
@@ -16,7 +17,11 @@ export class AdmingLogInComponent implements OnInit {
   loginForm: FormGroup;
 
   // -------------------------------------------------------
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private router: Router
+  ) { }
+  /* Angular Methods */
   // -------------------------------------------------------
   ngOnInit() {
 
@@ -35,8 +40,22 @@ export class AdmingLogInComponent implements OnInit {
     });
 
   }
+  /* Form methods*/
+  // -------------------------------------------------------
+  get strEmail() { return this.loginForm.get('strEmail'); }
+  // -------------------------------------------------------
+  get strPassword() { return this.loginForm.get('strPassword'); }
+  /* HTML methods */
   // -------------------------------------------------------
   onLogin() {
-    console.log('here');
+    this.userService.LogIn(
+      this.strEmail.value,
+      this.strPassword.value
+    ).subscribe((result: any) => {
+      sessionStorage.setItem('portfolioToken', result.token);
+      this.router.navigate(['/admin']);
+    }, (error) => {
+      console.log(error);
+    });
   }
 }

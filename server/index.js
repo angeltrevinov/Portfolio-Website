@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const config = require('../config');
 
 // ====================== INDEX ============================
 /*
@@ -27,7 +28,7 @@ app.use((req, res, next) => {
 //Mongo Connection
 // ---------------------------------------------------------
 mongoose.connect(
-  'connection here',
+  config.DATABASE_URL,
   { useUnifiedTopology: true, useNewUrlParser: true }
   ).then(() => {
     console.log('connected to the database');
@@ -38,9 +39,11 @@ mongoose.connect(
 // Import Routes
 // ---------------------------------------------------------
 const userRoutes = require('./Routes/UserRoutes');
+const projectRoutes = require('./Routes/ProjectRoutes');
 
 // Routes for requests
 app.use('/api/admin', userRoutes);
+app.use('/api/project', projectRoutes);
 
 // Start the server
 // ---------------------------------------------------------

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MainComponent } from './main/main.component';
 import {AdminRoutingModule} from './admin-routing.module';
+import { AboutmeComponent } from './main/aboutme/aboutme.component';
 
 // ======================= ADMIN MODULE ====================
 /*
@@ -12,7 +13,8 @@ import {AdminRoutingModule} from './admin-routing.module';
 * */
 @NgModule({
   declarations: [
-    MainComponent
+    MainComponent,
+    AboutmeComponent
   ],
   imports: [
     CommonModule,

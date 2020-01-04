@@ -1,1 +1,15 @@
+<form [formGroup]="aboutForm" (submit)="onUpdate()">
 
+  <!-- About modification -->
+  <h4>English Description</h4>
+  <div class="form-group row">
+    <div class="col">
+      <p>{{ strEngDesc }}</p>
+    </div>
+    <div class="col">
+      <textarea rows="3" class="form-control" formControlName="strEngAbout"></textarea>
+    </div>
+  </div>
+
+  <button class="btn btn-primary" type="submit" [disabled]="aboutForm.invalid">Update</button>
+</form>

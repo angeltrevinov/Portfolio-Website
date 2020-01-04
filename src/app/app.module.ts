@@ -3,9 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {AppRoutingModule} from './app-routing.module';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {UserService} from './service/user.service';
 import {AdminGuard} from './guards/admin.guard';
+import {TokenInterceptor} from './service/TokenInterceptor';
 
 // ====================== APP MODULE =======================
 /*
@@ -22,7 +23,12 @@ import {AdminGuard} from './guards/admin.guard';
   ],
   providers: [
     UserService,
-    AdminGuard
+    AdminGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

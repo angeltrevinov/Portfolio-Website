@@ -6,10 +6,12 @@ const mongoose = require('mongoose');
 * */
 const projectSchema = mongoose.Schema({
   strName: { type: String, required: true},
-  strDescription: { type: String, required: true},
-  strCollaborators: { type: Array, required: true},
-  intLvlImportance: { type: Number, required: true },
+  strIdCreator: { type: String, required: true},
+  strEngDescription: { type: String, required: true},
   strUrlGithub: { type: String, required: true},
+  strSpaDescription: { type: String },
+  strCollaborators: { type: Array, },
+  intLvlImportance: { type: Number },
   strUrlHosting: { type: String },
   strUrlPhoto: { type: String }
 });

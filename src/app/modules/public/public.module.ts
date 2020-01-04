@@ -10,6 +10,7 @@ import { AdmingLogInComponent } from './adming-log-in/adming-log-in.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {UserService} from '../../service/user.service';
 import {LoginGuard} from '../../guards/login.guard';
+import { AboutmeComponent } from './main/aboutme/aboutme.component';
 
 // ========================== PUBLIC MODULE ================
 /*
@@ -24,6 +25,7 @@ import {LoginGuard} from '../../guards/login.guard';
     ExperienceCardComponent,
     LangFrameCardComponent,
     AdmingLogInComponent,
+    AboutmeComponent,
   ],
   imports: [
     CommonModule,

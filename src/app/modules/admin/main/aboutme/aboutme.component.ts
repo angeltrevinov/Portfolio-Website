@@ -15,6 +15,7 @@ import {UserService} from '../../../../service/user.service';
 export class AboutmeComponent implements OnInit {
 
   aboutForm: FormGroup;
+  strEngDesc: string;
 
   // -------------------------------------------------------
   constructor(private userService: UserService) { }
@@ -44,7 +45,7 @@ export class AboutmeComponent implements OnInit {
   ) {
     this.userService.getAbout()
       .subscribe((result: any) => {
-        console.log(result);
+        this.strEngDesc = result.strEngAbout;
       }, (error) => {
         console.log(error);
       });
@@ -52,7 +53,13 @@ export class AboutmeComponent implements OnInit {
   /* HTML methods */
   // -------------------------------------------------------
   onUpdate() {
-    console.log('here');
+    this.userService.updateAbout(
+      this.strEngAbout.value
+    ).subscribe((result) => {
+      this.reqAbout();
+    }, (error) => {
+      console.log(error);
+    });
   }
 
 }

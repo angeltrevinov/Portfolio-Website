@@ -31,4 +31,14 @@ export class UserService {
   ) {
     return this.http.get(BACKENDUSER + '/about');
   }
+  // -------------------------------------------------------
+  updateAbout(
+    // Update the about information
+    strEngAbout: string
+  ) {
+    return this.http.put(
+      BACKENDUSER + '/about',
+      { strEngAbout }
+      );
+  }
 }

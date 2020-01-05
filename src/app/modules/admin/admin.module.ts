@@ -6,6 +6,7 @@ import { AboutmeComponent } from './main/aboutme/aboutme.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { ProjectsTableComponent } from './main/projects-table/projects-table.component';
 import {SharedModule} from '../shared/shared.module';
+import { ProjectEditorComponent } from './project-editor/project-editor.component';
 
 // ======================= ADMIN MODULE ====================
 /*
@@ -18,7 +19,8 @@ import {SharedModule} from '../shared/shared.module';
   declarations: [
     MainComponent,
     AboutmeComponent,
-    ProjectsTableComponent
+    ProjectsTableComponent,
+    ProjectEditorComponent
   ],
   imports: [
     CommonModule,

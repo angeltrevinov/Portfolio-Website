@@ -73,4 +73,10 @@ router.get('/admin', checkAuth, function (req, res, next) {
 
 });
 
+/* DELETE A PROJECT */
+// ---------------------------------------------------------
+router.delete('/', checkAuth, function (req, res, next) {
+
+});
+
 module.exports = router;

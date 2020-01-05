@@ -4,6 +4,8 @@ import { MainComponent } from './main/main.component';
 import {AdminRoutingModule} from './admin-routing.module';
 import { AboutmeComponent } from './main/aboutme/aboutme.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { ProjectsTableComponent } from './main/projects-table/projects-table.component';
+import {SharedModule} from '../shared/shared.module';
 
 // ======================= ADMIN MODULE ====================
 /*
@@ -15,12 +17,14 @@ import {ReactiveFormsModule} from '@angular/forms';
 @NgModule({
   declarations: [
     MainComponent,
-    AboutmeComponent
+    AboutmeComponent,
+    ProjectsTableComponent
   ],
-    imports: [
-        CommonModule,
-        AdminRoutingModule,
-        ReactiveFormsModule
-    ]
+  imports: [
+    CommonModule,
+    AdminRoutingModule,
+    ReactiveFormsModule,
+    SharedModule
+  ]
 })
 export class AdminModule { }

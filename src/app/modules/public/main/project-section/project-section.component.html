@@ -1,0 +1,9 @@
+<div *ngIf="!showSpinner">
+  <div class="carousel" *ngFor="let project of arrProjects">
+    <app-project-card [project]="project"></app-project-card>
+  </div>
+</div>
+
+<div class="row" style="justify-content: center;" *ngIf="showSpinner">
+  <app-spinner></app-spinner>
+</div>

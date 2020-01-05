@@ -29,7 +29,7 @@ router.get('/', function (req, res, next) {
 
 });
 
-/* CREATE A POST */
+/* CREATE A PROJECT */
 // ---------------------------------------------------------
 router.post('/', checkAuth, function (req, res, next) {
 

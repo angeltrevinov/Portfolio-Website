@@ -2,10 +2,26 @@
 
   <h1>Welcome Angel Treviño</h1>
 
+  <!-- ABOUT ME MANAGER -->
   <div class="container">
     <h2>About Me</h2>
     <hr>
     <app-aboutme></app-aboutme>
+  </div>
+
+  <!-- PROJECTS MANAGER -->
+  <div class="container">
+    <!-- header -->
+    <div class="row">
+      <div class="col">
+        <h2>Projects</h2>
+      </div>
+      <div class="col" style="text-align: end;">
+        <button type="button" class="btn btn-secondary">&#43;</button>
+      </div>
+    </div>
+    <hr>
+    <app-projects-table></app-projects-table>
   </div>
 
 </div>

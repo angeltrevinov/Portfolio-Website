@@ -13,7 +13,7 @@ import {UserService} from '../../../../service/user.service';
 })
 export class AboutmeComponent implements OnInit {
 
-  strEngDesc: string;
+  strAbout: string;
 
   // -------------------------------------------------------
   constructor(private userService: UserService) { }
@@ -21,7 +21,7 @@ export class AboutmeComponent implements OnInit {
   ngOnInit() {
     this.userService.getAbout()
       .subscribe((result: any) => {
-      this.strEngDesc = result.strEngAbout;
+      this.strAbout = result.strAbout;
     }, (error) => {
       console.log(error);
     });

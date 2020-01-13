@@ -34,11 +34,11 @@ export class UserService {
   // -------------------------------------------------------
   updateAbout(
     // Update the about information
-    strEngAbout: string
+    strAbout: string
   ) {
     return this.http.put(
       BACKENDUSER + '/about',
-      { strEngAbout }
+      { strAbout }
       );
   }
 }

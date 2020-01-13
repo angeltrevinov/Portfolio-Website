@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "dev": "concurrently \"ng serve\" \"nodemon server/index.js\"",
+    "start": "nodemon server/index.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "start:server": "nodemon server/index.js"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +24,7 @@
     "bcrypt": "^3.0.7",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "concurrently": "^5.0.2",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.8.3",

@@ -15,7 +15,7 @@ import {UserService} from '../../../../service/user.service';
 export class AboutmeComponent implements OnInit {
 
   aboutForm: FormGroup;
-  strEngDesc: string;
+  strAbout: string;
 
   // -------------------------------------------------------
   constructor(private userService: UserService) { }
@@ -27,7 +27,7 @@ export class AboutmeComponent implements OnInit {
 
     this.aboutForm = new FormGroup({
       // Personal description in English
-      strEngAbout: new FormControl(null, {
+      strFormAbout: new FormControl(null, {
         validators: [
           Validators.required
         ]
@@ -37,7 +37,7 @@ export class AboutmeComponent implements OnInit {
   }
   /* Form methods */
   // -------------------------------------------------------
-  get strEngAbout() { return this.aboutForm.get('strEngAbout'); }
+  get strFormAbout() { return this.aboutForm.get('strFormAbout'); }
   /* Service methods */
   // -------------------------------------------------------
   reqAbout(
@@ -45,7 +45,7 @@ export class AboutmeComponent implements OnInit {
   ) {
     this.userService.getAbout()
       .subscribe((result: any) => {
-        this.strEngDesc = result.strEngAbout;
+        this.strAbout = result.strAbout;
       }, (error) => {
         console.log(error);
       });
@@ -54,7 +54,7 @@ export class AboutmeComponent implements OnInit {
   // -------------------------------------------------------
   onUpdate() {
     this.userService.updateAbout(
-      this.strEngAbout.value
+      this.strFormAbout.value
     ).subscribe((result) => {
       this.reqAbout();
     }, (error) => {

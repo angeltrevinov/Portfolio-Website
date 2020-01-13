@@ -78,6 +78,22 @@ router.post('/login', (req, res, next) => {
   });
 });
 
+/*
+* GET: ABOUT - route to get the information about the main
+* user, this is a description of what the user does
+* */
+// ---------------------------------------------------------
+router.get('/about', function (req, res, next) {
+
+  User.findOne().select({ 'strAbout': 1, '_id': 0})
+    .then((result) => {
+      return res.status(200).json(result);
+    }).catch((error) => {
+    return res.status(500).json(error);
+  });
+
+});
+
 /**
  * PUT: ABOUT - route to edit or post new personal
  * description about the main user
@@ -87,28 +103,14 @@ router.put('/about', checkAuth, function (req, res, next) {
 
   if(
     //check if one of the descriptions is received
-    !req.body.strEngAbout &&
-    !req.body.strSpaAbout
+    !req.body.strAbout
   ) {
     return res.status(400).json({
       message: 'no description provided'
     });
-  }
-
-  let json = {};
-
-  if(
-    // check if we have a change for strEngAbout
-    req.body.strEngAbout
-  ) {
-    json.strEngAbout = req.body.strEngAbout;
-  }
-
-  if(
-    // check if we have a change for strSpaAbout
-    req.body.strSpaAbout
-  ) {
-    json.strSpaAbout = req.body.strSpaAbout;
+  } else {
+    json = {};
+    json.strAbout = req.body.strAbout;
   }
 
   User.updateOne(
@@ -122,22 +124,6 @@ router.put('/about', checkAuth, function (req, res, next) {
   }).catch((error) => {
     return res.status(500).json(error);
   });
-});
-
-/*
-* GET: ABOUT - route to get the information about the main
-* user, this is a description of what the user does
-* */
-// ---------------------------------------------------------
-router.get('/about', function (req, res, next) {
-
-  User.findOne().select({ 'strEngAbout': 1, '_id': 0})
-    .then((result) => {
-    return res.status(200).json(result);
-  }).catch((error) => {
-    return res.status(500).json(error);
-  });
-
 });
 
 module.exports = router;

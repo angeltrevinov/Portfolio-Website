@@ -7,9 +7,8 @@ const mongoose = require('mongoose');
 const projectSchema = mongoose.Schema({
   strName: { type: String, required: true},
   strIdCreator: { type: String, required: true},
-  strEngDescription: { type: String, required: true},
+  strDesc: { type: String, required: true},
   strUrlGithub: { type: String, required: true},
-  strSpaDescription: { type: String },
   strCollaborators: { type: Array, },
   intLvlImportance: { type: Number },
   strUrlHosting: { type: String },

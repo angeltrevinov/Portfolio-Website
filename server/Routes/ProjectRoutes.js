@@ -20,10 +20,25 @@ router.get('/', function (req, res, next) {
   Project.find().select({
     'strName': 1,
     'strDesc': 1,
-    'strUrlGithub': 1
+    'strUrlGithub': 1,
+    'strUrlHosting': 1
   }).then((result) => {
     return res.status(200).json(result);
   }).catch((error) => {
+    return res.status(500).json(error);
+  });
+});
+
+/* GET: - PROJECTS FOR ADMIN */
+// ---------------------------------------------------------
+router.get('/admin', checkAuth, function (req, res, next) {
+
+  Project.find().select({
+    'strName': 1
+  }).then((result) => {
+    return res.status(200).json(result);
+  }).catch((error) => {
+    console.log(error);
     return res.status(500).json(error);
   });
 
@@ -60,20 +75,6 @@ router.get('/:id', function (req, res, next) {
 
 });
 
-/* GET: - PROJECTS FOR ADMIN */
-// ---------------------------------------------------------
-router.get('/admin', checkAuth, function (req, res, next) {
-
-  Project.find().select({
-    'strName': 1
-  }).then((result) => {
-    return res.status(200).json(result);
-  }).catch((error) => {
-    return res.status(500).json(error);
-  });
-
-});
-
 /* POST: - CREATE A PROJECT */
 // ---------------------------------------------------------
 router.post('/', checkAuth, function (req, res, next) {
@@ -93,7 +94,8 @@ router.post('/', checkAuth, function (req, res, next) {
     strName: req.body.strName,
     strIdCreator: req.userData._id,
     strDesc: req.body.strDesc,
-    strUrlGithub: req.body.strUrlGithub
+    strUrlGithub: req.body.strUrlGithub,
+    strUrlHosting: req.body.strUrlHosting
   });
 
   newProject.save().then((result) => {

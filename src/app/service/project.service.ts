@@ -26,4 +26,17 @@ export class ProjectService {
   ) {
     return this.http.get(BACKENDPROJECT + '/admin');
   }
+  // -------------------------------------------------------
+  createProject(
+    // http method to request to create a new project
+    strName: string,
+    strDesc: string,
+    strUrlGithub: string,
+    strUrlHosting: string,
+  ) {
+    return this.http.post(
+      BACKENDPROJECT + '/',
+      { strName, strDesc, strUrlGithub, strUrlHosting }
+    );
+  }
 }

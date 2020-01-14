@@ -15,7 +15,7 @@ import {ProjectEditorComponent} from './project-editor/project-editor.component'
 const routes: Routes = [
   { path: '', component: MainComponent},
   { path: 'project', component: ProjectEditorComponent },
-  { path: 'project/:id', component: ProjectEditorComponent}
+  { path: 'project/:id', component: ProjectEditorComponent },
 ];
 
 @NgModule({

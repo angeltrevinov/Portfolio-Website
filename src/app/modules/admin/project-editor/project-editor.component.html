@@ -1,1 +1,49 @@
-<p>project-editor works!</p>
+<div class="container">
+  <div class="row">
+    <h1>Creating new project</h1>
+  </div>
+
+  <hr>
+
+  <form [formGroup]="projectForm">
+    <!-- PROJECT NAME -->
+    <div class="form-group">
+      <label for="ProjectName">Project Name</label>
+      <input type="text"
+             id="ProjectName"
+             placeholder="Portfolio Web page"
+             class="form-control"
+             formControlName="strName">
+    </div>
+    <!-- PROJECT DESCRIPTION -->
+    <div class="form-group">
+      <label for="ProjectDesc">Description of your project</label>
+      <textarea id="ProjectDesc"
+                cols="15"
+                rows="3"
+                class="form-control"
+                formControlName="strDesc"></textarea>
+    </div>
+    <!-- REPO LINK -->
+    <div class="form-group">
+      <label for="RepoLink">Url to the project Repository</label>
+      <input type="text"
+             id="RepoLink"
+             class="form-control"
+             formControlName="strUrlGithub">
+    </div>
+    <!-- Link to Hosted project -->
+    <div class="form-group">
+      <label for="HostLink">Url to where the project has been hosted at</label>
+      <input type="text"
+             id="HostLink"
+             class="form-control"
+             formControlName="strUrlHosting">
+    </div>
+    <div class="row button-row">
+      <button type="button" class="btn btn-danger" [routerLink]="['/admin']">Cancel</button>
+      <button type="button" class="btn btn-primary" [disabled]="projectForm.invalid" (click)="onCreateProject()">Create</button>
+    </div>
+  </form>
+
+</div>

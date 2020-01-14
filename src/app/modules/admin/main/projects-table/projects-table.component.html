@@ -1,14 +1,21 @@
 <!-- TABLE  -->
 <div class="table-responsive">
-  <table class="table table-striped " *ngIf="!showSpinner">
+  <table class="table table-striped " *ngIf="!showSpinner && arrProjects.length > 0">
     <tbody *ngFor="let project of arrProjects">
     <tr>
       <td class="col-8" style="vertical-align: middle;"> {{ project.strName }} </td>
-      <td class="col-2"><button type="button" class="btn btn-warning" [routerLink]="['./project', project._id]">Edit</button></td>
-      <td class="col-2"><button type="button" class="btn btn-danger">Delete</button></td>
+      <td class="col-4" style="text-align: end">
+        <button type="button" class="btn btn-warning" [routerLink]="['./project', project._id]">Edit</button>
+        <button type="button" class="btn btn-danger">Delete</button>
+      </td>
     </tr>
     </tbody>
   </table>
+</div>
+
+<!-- no projects have been added -->
+<div class="row" style="justify-content: center;" *ngIf="!showSpinner && arrProjects.length == 0">
+  <p>no projects have been added</p>
 </div>
 
 <!-- SPINNER -->

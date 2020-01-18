@@ -7,7 +7,6 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {UserService} from './service/user.service';
 import {AdminGuard} from './guards/admin.guard';
 import {TokenInterceptor} from './service/TokenInterceptor';
-import {SharedModule} from './modules/shared/shared.module';
 import {ProjectService} from './service/project.service';
 
 // ====================== APP MODULE =======================
@@ -16,7 +15,7 @@ import {ProjectService} from './service/project.service';
 * */
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

@@ -38,7 +38,6 @@ router.get('/admin', checkAuth, function (req, res, next) {
   }).then((result) => {
     return res.status(200).json(result);
   }).catch((error) => {
-    console.log(error);
     return res.status(500).json(error);
   });
 
@@ -118,7 +117,6 @@ router.put('/:id', checkAuth, function (req, res, next) {
       message: 'No Project specified'
     });
   }
-
   let json = {
     strName: req.body.strName,
     strDesc: req.body.strDesc,
@@ -127,9 +125,8 @@ router.put('/:id', checkAuth, function (req, res, next) {
     intLvlImportance: req.body.intLvlImportance,
     strUrlHosting: req.body.strUrlHosting,
   };
-
   Project.findOneAndUpdate(
-    {_id: req.param.id},
+    {_id: req.params.id},
     json
   ).then((result) => {
     return res.status(200).json({

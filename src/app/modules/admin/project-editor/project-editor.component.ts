@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {validate} from 'codelyzer/walkerFactory/walkerFn';
 import {ProjectService} from '../../../service/project.service';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 
 // ==================== PROJECT EDITOR =====================
 /*
@@ -14,16 +14,33 @@ import {ProjectService} from '../../../service/project.service';
 })
 export class ProjectEditorComponent implements OnInit {
 
+  editProjectId: string;
+  editMode = false;
   projectForm: FormGroup;
 
   // -------------------------------------------------------
-  constructor(private projectService: ProjectService) { }
-  /* ANGULAR METHODS */
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private projectService: ProjectService
+  ) { }
+  // TODO: ANGULAR METHODS
   // -------------------------------------------------------
   ngOnInit() {
+
+    // get params of route
+    this.route.paramMap.subscribe((result: ParamMap) => {
+      this.editProjectId = result.get('id');
+    });
+
     this.createForm();
+
+    if (this.editProjectId) {
+      this.editMode = true;
+      this.reqProjectDetails();
+    }
   }
-  /* FORM METHODS */
+  // TODO: FORM METHODS
   // -------------------------------------------------------
   createForm() {
     this.projectForm = new FormGroup({
@@ -53,7 +70,29 @@ export class ProjectEditorComponent implements OnInit {
   get strUrlGithub() { return this.projectForm.get('strUrlGithub'); }
   // -------------------------------------------------------
   get strUrlHosting() { return this.projectForm.get('strUrlHosting'); }
-  /* HTTP METHODS */
+  // -------------------------------------------------------
+  populateForm(
+    // method that fills the form with the data that we have
+    // receive from our backend if we are in editing mode
+    editProjectInfo: any
+  ) {
+    this.strName.setValue(editProjectInfo.strName);
+    this.strDesc.setValue(editProjectInfo.strDesc);
+    this.strUrlGithub.setValue(editProjectInfo.strUrlGithub);
+    this.strUrlHosting.setValue(editProjectInfo.strUrlHosting);
+    this.projectForm.markAsUntouched();
+  }
+  // TODO: HTTP METHODS
+  // -------------------------------------------------------
+  reqProjectDetails() {
+    this.projectService.getProjectDetails(
+      this.editProjectId
+    ).subscribe((result: any) => {
+      this.populateForm(result);
+    }, (error) => {
+      console.log(error);
+    });
+  }
   // -------------------------------------------------------
   onCreateProject() {
     this.projectService.createProject(
@@ -62,8 +101,22 @@ export class ProjectEditorComponent implements OnInit {
       this.strUrlGithub.value,
       this.strUrlHosting.value
     ).subscribe((result) => {
-      console.log(result);
+      this.router.navigate(['/admin']);
     }, (error) => {
+      console.log(error);
+    });
+  }
+  // -------------------------------------------------------
+  onUpdateProject() {
+    this.projectService.updateProject(
+      this.editProjectId,
+      this.strName.value,
+      this.strDesc.value,
+      this.strUrlGithub.value,
+      this.strUrlHosting.value
+    ).subscribe((result) => {
+      this.router.navigate(['/admin']);
+    }, error => {
       console.log(error);
     });
   }

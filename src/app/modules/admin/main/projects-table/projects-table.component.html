@@ -6,7 +6,7 @@
       <td class="col-8" style="vertical-align: middle;"> {{ project.strName }} </td>
       <td class="col-4" style="text-align: end">
         <button type="button" class="btn btn-warning" [routerLink]="['./project', project._id]">Edit</button>
-        <button type="button" class="btn btn-danger">Delete</button>
+        <button type="button" class="btn btn-danger" (click)="onDelete(project._id)">Delete</button>
       </td>
     </tr>
     </tbody>

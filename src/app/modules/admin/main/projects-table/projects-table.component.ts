@@ -39,4 +39,16 @@ export class ProjectsTableComponent implements OnInit {
         console.log(error);
     });
   }
+  // -------------------------------------------------------
+  onDelete(
+    strProjectId: string
+  ) {
+   this.projectService.deleteProject(
+     strProjectId
+   ).subscribe(() => {
+     this.reqProjects();
+   }, (error) => {
+     console.log(error);
+   });
+  }
 }

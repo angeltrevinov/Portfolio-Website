@@ -28,7 +28,7 @@ app.use((req, res, next) => {
 // ---------------------------------------------------------
 mongoose.connect(
   config.DATABASE_URL,
-  { useUnifiedTopology: true, useNewUrlParser: true }
+  { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false }
   ).then(() => {
     console.log('connected to the database');
   }).catch((error) => {

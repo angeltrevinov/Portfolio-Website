@@ -42,7 +42,8 @@
     </div>
     <div class="row button-row">
       <button type="button" class="btn btn-danger" [routerLink]="['/admin']">Cancel</button>
-      <button type="button" class="btn btn-primary" [disabled]="projectForm.invalid" (click)="onCreateProject()">Create</button>
+      <button *ngIf="!editMode" type="button" class="btn btn-primary" [disabled]="projectForm.invalid" (click)="onCreateProject()">Create</button>
+      <button *ngIf="editMode" type="button" class="btn btn-primary" [disabled]="projectForm.invalid || !this.projectForm.touched" (click)="onUpdateProject()">Update</button>
     </div>
   </form>
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {environment} from '../../environments/environment';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 
 // ======================== PROJECT SERVICE ================
 /*
@@ -37,6 +37,43 @@ export class ProjectService {
     return this.http.post(
       BACKENDPROJECT + '/',
       { strName, strDesc, strUrlGithub, strUrlHosting }
+    );
+  }
+  // -------------------------------------------------------
+  getProjectDetails(
+    // http method to request the details of a project
+    strIdProject: string
+  ) {
+    return this.http.get(
+      BACKENDPROJECT + '/' + strIdProject
+    );
+  }
+  // -------------------------------------------------------
+  updateProject(
+    // http method to request an update of our project
+    strIdProject: string,
+    strName: string,
+    strDesc: string,
+    strUrlGithub: string,
+    strUrlHosting: string
+  ) {
+    return this.http.put(
+      BACKENDPROJECT + '/' + strIdProject,
+      {
+        strName,
+        strDesc,
+        strUrlGithub,
+        strUrlHosting
+      }
+    );
+  }
+  // -------------------------------------------------------
+  deleteProject(
+    // http method to request the deletion of a project
+    strIdProject: string
+  ) {
+    return this.http.delete(
+      BACKENDPROJECT + '/' + strIdProject
     );
   }
 }

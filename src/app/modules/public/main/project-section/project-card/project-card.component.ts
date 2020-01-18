@@ -16,6 +16,7 @@ export class ProjectCardComponent implements OnInit {
 
   // -------------------------------------------------------
   constructor() { }
+  // TODO: ANGULAR METHODS
   // -------------------------------------------------------
   ngOnInit() { }
 }

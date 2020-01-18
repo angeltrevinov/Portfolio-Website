@@ -19,7 +19,7 @@ export class AboutmeComponent implements OnInit {
 
   // -------------------------------------------------------
   constructor(private userService: UserService) { }
-  /* Angular methods */
+  // TODO: ANGULAR METHODS
   // -------------------------------------------------------
   ngOnInit() {
 
@@ -35,10 +35,10 @@ export class AboutmeComponent implements OnInit {
     });
 
   }
-  /* Form methods */
+  // TODO: FORM METHODS
   // -------------------------------------------------------
   get strFormAbout() { return this.aboutForm.get('strFormAbout'); }
-  /* Service methods */
+  // TODO: HTTP METHODS
   // -------------------------------------------------------
   reqAbout(
     // make the request for the about information
@@ -50,7 +50,6 @@ export class AboutmeComponent implements OnInit {
         console.log(error);
       });
   }
-  /* HTML methods */
   // -------------------------------------------------------
   onUpdate() {
     this.userService.updateAbout(

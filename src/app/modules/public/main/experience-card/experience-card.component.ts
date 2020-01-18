@@ -13,6 +13,7 @@ import { Component, OnInit } from '@angular/core';
 export class ExperienceCardComponent implements OnInit {
   // -------------------------------------------------------
   constructor() { }
+  // TODO: ANGULAR METHODS
   // -------------------------------------------------------
   ngOnInit() {}
 }

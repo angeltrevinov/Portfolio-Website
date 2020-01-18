@@ -21,7 +21,7 @@ export class AdmingLogInComponent implements OnInit {
     private userService: UserService,
     private router: Router
   ) { }
-  /* Angular Methods */
+  // TODO: ANGULAR METHODS
   // -------------------------------------------------------
   ngOnInit() {
 
@@ -40,12 +40,12 @@ export class AdmingLogInComponent implements OnInit {
     });
 
   }
-  /* Form methods*/
+  // TODO: FORM METHODS
   // -------------------------------------------------------
   get strEmail() { return this.loginForm.get('strEmail'); }
   // -------------------------------------------------------
   get strPassword() { return this.loginForm.get('strPassword'); }
-  /* HTML methods */
+  // TODO: HTTP METHODS
   // -------------------------------------------------------
   onLogin() {
     this.userService.LogIn(

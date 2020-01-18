@@ -17,7 +17,7 @@ export class ProjectsTableComponent implements OnInit {
   arrProjects: any [];
   // -------------------------------------------------------
   constructor(private projectService: ProjectService) { }
-  /* Angular methods */
+  // TODO: ANGULAR METHODS
   // -------------------------------------------------------
   ngOnInit() {
 
@@ -27,7 +27,7 @@ export class ProjectsTableComponent implements OnInit {
 
     this.reqProjects();
   }
-  /* Service methods */
+  // TODO: HTTP METHODS
   // -------------------------------------------------------
   reqProjects() {
     this.projectService.getProjectsAdmin()

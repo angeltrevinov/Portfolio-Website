@@ -18,7 +18,7 @@ export class ProjectSectionComponent implements OnInit {
 
   // -------------------------------------------------------
   constructor(private projectService: ProjectService) { }
-  /* Angular methods */
+  // TODO: ANGULAR METHODS
   // -------------------------------------------------------
   ngOnInit() {
 
@@ -28,7 +28,7 @@ export class ProjectSectionComponent implements OnInit {
 
     this.reqProjects();
   }
-  /* Service methods */
+  // TODO: HTTP METHODS
   // -------------------------------------------------------
   reqProjects() {
     this.projectService.getProjects()

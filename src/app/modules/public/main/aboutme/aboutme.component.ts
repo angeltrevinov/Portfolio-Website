@@ -17,6 +17,7 @@ export class AboutmeComponent implements OnInit {
 
   // -------------------------------------------------------
   constructor(private userService: UserService) { }
+  // ANGULAR METHODS
   // -------------------------------------------------------
   ngOnInit() {
     this.userService.getAbout()

@@ -9,13 +9,13 @@ const config = require('../config');
 * Holds the backend side together
 * */
 
-//App settings
+// TODO: App settings
 // ---------------------------------------------------------
 const app = express();
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 
-//Set headers for the requests
+// TODO: Set headers for the requests
 //----------------------------------------------------------
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -24,7 +24,7 @@ app.use((req, res, next) => {
   next();
 });
 
-//Mongo Connection
+// TODO: Mongo Connection
 // ---------------------------------------------------------
 mongoose.connect(
   config.DATABASE_URL,
@@ -35,16 +35,18 @@ mongoose.connect(
     console.log(error);
   });
 
-// Import Routes
+// TODO: Import Routes
 // ---------------------------------------------------------
 const userRoutes = require('./Routes/UserRoutes');
 const projectRoutes = require('./Routes/ProjectRoutes');
+const experienceRoutes = require('./Routes/ExperienceRoutes');
 
-// Routes for requests
+// TODO: Routes for requests
 app.use('/api/admin', userRoutes);
 app.use('/api/project', projectRoutes);
+app.use('/api/experience', experienceRoutes);
 
-// Start the server
+// TODO: Start the server
 // ---------------------------------------------------------
 app.listen(process.env.PORT || '8080', () => {
   console.log("App running");

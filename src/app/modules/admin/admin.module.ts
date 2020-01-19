@@ -7,6 +7,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { ProjectsTableComponent } from './main/projects-table/projects-table.component';
 import {SharedModule} from '../shared/shared.module';
 import { ProjectEditorComponent } from './project-editor/project-editor.component';
+import { ExperienceEditorComponent } from './experience-editor/experience-editor.component';
 
 // ======================= ADMIN MODULE ====================
 /*
@@ -20,7 +21,8 @@ import { ProjectEditorComponent } from './project-editor/project-editor.componen
     MainComponent,
     AboutmeComponent,
     ProjectsTableComponent,
-    ProjectEditorComponent
+    ProjectEditorComponent,
+    ExperienceEditorComponent
   ],
   imports: [
     CommonModule,

@@ -9,10 +9,7 @@ const projectSchema = mongoose.Schema({
   strIdCreator: { type: String, required: true},
   strDesc: { type: String, required: true},
   strUrlGithub: { type: String, required: true},
-  strCollaborators: { type: Array, },
-  intLvlImportance: { type: Number },
   strUrlHosting: { type: String },
-  strUrlPhoto: { type: String }
 });
 
 module.exports = mongoose.model('Project', projectSchema);

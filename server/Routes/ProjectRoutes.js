@@ -6,14 +6,14 @@ const express = require('express');
 * */
 const router = express.Router();
 
-/* MODELS */
+// TODO: MODELS
 // ---------------------------------------------------------
 const Project = require('../Models/Project');
-/* MIDDLEWARES */
+// TODO: MIDDLEWARES
 // ---------------------------------------------------------
 const checkAuth = require('../middleware/check-auth');
 
-/* GET: - PROJECTS FOR PUBLIC */
+// TODO: GET - PROJECTS FOR PUBLIC
 // ---------------------------------------------------------
 router.get('/', function (req, res, next) {
 
@@ -29,7 +29,7 @@ router.get('/', function (req, res, next) {
   });
 });
 
-/* GET: - PROJECTS FOR ADMIN */
+// TODO: GET - PROJECTS FOR ADMIN
 // ---------------------------------------------------------
 router.get('/admin', checkAuth, function (req, res, next) {
 
@@ -43,7 +43,7 @@ router.get('/admin', checkAuth, function (req, res, next) {
 
 });
 
-/* GET: - DETAILS OF A CERTAIN PROJECT */
+// TODO: GET - DETAILS OF A CERTAIN PROJECT
 // ---------------------------------------------------------
 router.get('/:id', function (req, res, next) {
 
@@ -74,7 +74,7 @@ router.get('/:id', function (req, res, next) {
 
 });
 
-/* POST: - CREATE A PROJECT */
+// TODO: POST - CREATE A PROJECT
 // ---------------------------------------------------------
 router.post('/', checkAuth, function (req, res, next) {
 
@@ -105,7 +105,7 @@ router.post('/', checkAuth, function (req, res, next) {
 
 });
 
-/* PUT: - EDIT PROJECT */
+// TODO: PUT - EDIT PROJECT
 // ---------------------------------------------------------
 router.put('/:id', checkAuth, function (req, res, next) {
 
@@ -121,8 +121,6 @@ router.put('/:id', checkAuth, function (req, res, next) {
     strName: req.body.strName,
     strDesc: req.body.strDesc,
     strUrlGithub: req.body.strUrlGithub,
-    strCollaborators: req.body.strCollaborators,
-    intLvlImportance: req.body.intLvlImportance,
     strUrlHosting: req.body.strUrlHosting,
   };
   Project.findOneAndUpdate(
@@ -138,7 +136,7 @@ router.put('/:id', checkAuth, function (req, res, next) {
 
 });
 
-/* DELETE: - DELETE A PROJECT */
+// TODO: DELETE A PROJECT
 // ---------------------------------------------------------
 router.delete('/:id', checkAuth, function (req, res, next) {
 

@@ -1,3 +1,7 @@
 .container {
   margin-bottom: 20px;
 }
+
+.add-button {
+  text-align: end;
+}

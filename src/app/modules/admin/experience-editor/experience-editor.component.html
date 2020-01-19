@@ -1,1 +1,40 @@
-<p>experience-editor works!</p>
+<div class="container">
+  <!-- tittle -->
+  <div class="row">
+    <h1>Registering New Work Experience</h1>
+  </div>
+
+  <hr>
+
+  <form [formGroup]="experienceForm">
+    <!-- Company Name -->
+    <div class="form-group">
+      <label for="CompanyName">Company's Name</label>
+      <input type="text"
+             id="CompanyName"
+             placeholder="Company Org"
+             class="form-control" formControlName="strCompanyName">
+    </div>
+    <!-- Position -->
+    <div class="form-group">
+      <label for="Position">Position You Took</label>
+      <input type="text"
+             id="Position"
+             placeholder="Full Stack Developer"
+             class="form-control" formControlName="strPosition">
+    </div>
+    <!-- Description -->
+    <div class="form-group">
+      <label for="ExperienceDesc">Description of what you did at the company</label>
+      <textarea
+        id="ExperienceDesc"
+        cols="15" rows="3"
+        class="form-control"
+        formControlName="strDesc"></textarea>
+    </div>
+    <!-- Currently Working -->
+    <div class="form-group row">
+
+    </div>
+  </form>
+</div>

@@ -1,6 +1,8 @@
 <div class="container">
+  <!-- tittle -->
   <div class="row">
-    <h1>Creating new project</h1>
+    <h1 *ngIf="!editMode">Creating new project</h1>
+    <h1 *ngIf="editMode">Editing {{ strName.value }}</h1>
   </div>
 
   <hr>

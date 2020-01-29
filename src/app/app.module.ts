@@ -8,6 +8,9 @@ import {UserService} from './service/user.service';
 import {AdminGuard} from './guards/admin.guard';
 import {TokenInterceptor} from './service/TokenInterceptor';
 import {ProjectService} from './service/project.service';
+import {MatNativeDateModule} from '@angular/material';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {ExperienceService} from './service/experience.service';
 
 // ====================== APP MODULE =======================
 /*
@@ -20,11 +23,14 @@ import {ProjectService} from './service/project.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NoopAnimationsModule,
+    MatNativeDateModule
   ],
   providers: [
     UserService,
     ProjectService,
+    ExperienceService,
     AdminGuard,
     {
       provide: HTTP_INTERCEPTORS,

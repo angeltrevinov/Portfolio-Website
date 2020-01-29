@@ -8,7 +8,7 @@ import { ProjectsTableComponent } from './main/projects-table/projects-table.com
 import {SharedModule} from '../shared/shared.module';
 import { ProjectEditorComponent } from './project-editor/project-editor.component';
 import { ExperienceEditorComponent } from './experience-editor/experience-editor.component';
-import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import {MatDatepickerModule} from '@angular/material';
 
 // ======================= ADMIN MODULE ====================
 /*
@@ -30,7 +30,7 @@ import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
     AdminRoutingModule,
     ReactiveFormsModule,
     SharedModule,
-    NgbDatepickerModule
+    MatDatepickerModule
   ]
 })
 export class AdminModule { }

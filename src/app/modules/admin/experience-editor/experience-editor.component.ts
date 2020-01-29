@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {MatDatepickerInputEvent} from '@angular/material';
 
 // =============== WORK EXPERIENCE EDITOR ==================
 /*
@@ -13,6 +14,9 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 export class ExperienceEditorComponent implements OnInit {
 
   experienceForm: FormGroup;
+  minDateForEnd: Date;
+  maxDateForEnd = new Date();
+  maxDateForStart = new Date();
 
   // -------------------------------------------------------
   constructor() { }
@@ -40,7 +44,7 @@ export class ExperienceEditorComponent implements OnInit {
           Validators.required
         ]
       }),
-      boolWorkingNow: new FormControl(null, {
+      boolWorkingNow: new FormControl(false, {
         validators: [
           Validators.required
         ]
@@ -65,5 +69,23 @@ export class ExperienceEditorComponent implements OnInit {
   get startDate() { return this.experienceForm.get('startDate'); }
   // -------------------------------------------------------
   get endDate() { return this.experienceForm.get('endDate'); }
+  // -------------------------------------------------------
+  startDateChange(event: MatDatepickerInputEvent<Date>) {
+    this.minDateForEnd = event.value;
+  }
+  // -------------------------------------------------------
+  endDateChange(event: MatDatepickerInputEvent<Date>) {
+    this.maxDateForStart = event.value;
+  }
+  // TODO: HTTP METHODS
+  // -------------------------------------------------------
+  onCreate() {
+    if (
+      // convert end date to null if still working there
+      this.boolWorkingNow.value
+    ) {
+      this.endDate.setValue(null);
+    }
+  }
 
 }

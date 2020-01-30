@@ -30,6 +30,7 @@ export class ProjectsTableComponent implements OnInit {
   // TODO: HTTP METHODS
   // -------------------------------------------------------
   reqProjects() {
+    this.showSpinner = true;
     this.projectService.getProjectsAdmin()
       .subscribe((result: any) => {
         this.showSpinner = false;

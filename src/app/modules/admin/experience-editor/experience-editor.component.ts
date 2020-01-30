@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatDatepickerInputEvent} from '@angular/material';
+import {ExperienceService} from '../../../service/experience.service';
+import {Router} from '@angular/router';
 
 // =============== WORK EXPERIENCE EDITOR ==================
 /*
@@ -19,7 +21,10 @@ export class ExperienceEditorComponent implements OnInit {
   maxDateForStart = new Date();
 
   // -------------------------------------------------------
-  constructor() { }
+  constructor(
+    private router: Router,
+    private experienceService: ExperienceService
+  ) { }
   // TODO: ANGULAR METHODS
   // -------------------------------------------------------
   ngOnInit() {
@@ -86,6 +91,18 @@ export class ExperienceEditorComponent implements OnInit {
     ) {
       this.endDate.setValue(null);
     }
+    this.experienceService.createExperience(
+      this.strCompanyName.value,
+      this.strPosition.value,
+      this.strDesc.value,
+      this.boolWorkingNow.value,
+      this.startDate.value,
+      this.endDate.value
+    ).subscribe(() => {
+      this.router.navigate(['./admin']);
+    }, (error) => {
+      console.log(error);
+    });
   }
 
 }

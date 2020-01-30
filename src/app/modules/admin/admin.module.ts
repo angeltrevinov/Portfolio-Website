@@ -9,6 +9,7 @@ import {SharedModule} from '../shared/shared.module';
 import { ProjectEditorComponent } from './project-editor/project-editor.component';
 import { ExperienceEditorComponent } from './experience-editor/experience-editor.component';
 import {MatDatepickerModule} from '@angular/material';
+import { ExperienceTableComponent } from './main/experience-table/experience-table.component';
 
 // ======================= ADMIN MODULE ====================
 /*
@@ -23,7 +24,8 @@ import {MatDatepickerModule} from '@angular/material';
     AboutmeComponent,
     ProjectsTableComponent,
     ProjectEditorComponent,
-    ExperienceEditorComponent
+    ExperienceEditorComponent,
+    ExperienceTableComponent
   ],
   imports: [
     CommonModule,

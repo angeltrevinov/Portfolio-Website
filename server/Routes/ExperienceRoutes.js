@@ -13,18 +13,37 @@ const Experience = require('../Models/Experience');
 // ---------------------------------------------------------
 const checkAuth = require('../middleware/check-auth');
 
+// TODO: GET - EXPERIENCE FOR ADMIN
+// ---------------------------------------------------------
+router.get('/admin', checkAuth, function (req, res, next) {
+  Experience.find().select({
+    'strCompanyName': 1,
+    'strPosition': 1,
+  }).sort({
+    'startDate': -1
+  }).then((result) => {
+    return res.status(200).json(result);
+  }).catch((error) => {
+    return res.status(400).json(error);
+  });
+});
+
 // TODO: POST - REGISTER A WORK EXPERIENCE
 // ---------------------------------------------------------
 router.post('/', checkAuth, function (req, res, next) {
 
-
+  console.log(req.body.strCompanyName);
+  console.log(req.body.strPosition);
+  console.log(req.body.strDesc);
+  console.log(req.body.boolWorkingNow);
+  console.log(req.body.startDate);
   if(
     // Check that we have all the fields to register our
     //      experience
     !req.body.strCompanyName ||
-    !req.strPosition ||
+    !req.body.strPosition ||
     !req.body.strDesc ||
-    !req.body.boolWorkingNow ||
+    !('boolWorkingNow' in req.body) ||
     !req.body.startDate
   ) {
     return res.status(400).json({

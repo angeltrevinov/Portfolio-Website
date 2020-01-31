@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterContentInit, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 
 // ======================= EXPERIENCE CARD =================
 /*
@@ -10,10 +10,20 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './experience-card.component.html',
   styleUrls: ['./experience-card.component.css']
 })
-export class ExperienceCardComponent implements OnInit {
+export class ExperienceCardComponent implements OnChanges {
+
+  @Input() experience: any;
+  startDate: Date;
+  endDate: Date;
+
   // -------------------------------------------------------
   constructor() { }
   // TODO: ANGULAR METHODS
   // -------------------------------------------------------
-  ngOnInit() {}
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.experience) {
+      this.startDate = new Date(this.experience.startDate);
+      this.endDate = new Date(this.experience.endDate);
+    }
+  }
 }

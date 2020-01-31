@@ -1,0 +1,9 @@
+<div *ngIf="!showSpinner" class="carousel">
+  <div *ngFor="let experience of arrExperience">
+    <app-experience-card [experience]="experience"></app-experience-card>
+  </div>
+</div>
+
+<div class="row" style="justify-content: center;" *ngIf="showSpinner">
+  <app-spinner></app-spinner>
+</div>

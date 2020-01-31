@@ -21,9 +21,6 @@ export class ProjectSectionComponent implements OnInit {
   // TODO: ANGULAR METHODS
   // -------------------------------------------------------
   ngOnInit() {
-
-    // initialize
-    this.showSpinner = true;
     this.arrProjects = [];
 
     this.reqProjects();
@@ -31,6 +28,7 @@ export class ProjectSectionComponent implements OnInit {
   // TODO: HTTP METHODS
   // -------------------------------------------------------
   reqProjects() {
+    this.showSpinner = true;
     this.projectService.getProjects()
       .subscribe((result: any) => {
         this.showSpinner = false;

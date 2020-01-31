@@ -15,15 +15,15 @@ export class ExperienceService {
   // -------------------------------------------------------
   constructor(private http: HttpClient) { }
   // -------------------------------------------------------
-  getExperienceAdmin(
-    // method to get the work experience for the admin
-    // preview
-  ) {
+  getExperience() {
+    return this.http.get(BACKENDEXPERIENCE + '/');
+  }
+  // -------------------------------------------------------
+  getExperienceAdmin() {
     return this.http.get( BACKENDEXPERIENCE + '/admin');
   }
   // -------------------------------------------------------
   createExperience(
-    // http method to request to register a work experience
     strCompanyName: string,
     strPosition: string,
     strDesc: string,

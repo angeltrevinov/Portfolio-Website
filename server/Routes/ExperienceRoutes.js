@@ -13,6 +13,18 @@ const Experience = require('../Models/Experience');
 // ---------------------------------------------------------
 const checkAuth = require('../middleware/check-auth');
 
+// TODO: GET - EXPERIENCE FOR PUBLIC
+// ---------------------------------------------------------
+router.get('/', function (req, res, next) {
+  Experience.find().sort({
+    'startDate': -1
+  }).then((result) => {
+    return res.status(200).json(result);
+  }).catch((error) => {
+    return res.status(500).json(error);
+  });
+});
+
 // TODO: GET - EXPERIENCE FOR ADMIN
 // ---------------------------------------------------------
 router.get('/admin', checkAuth, function (req, res, next) {

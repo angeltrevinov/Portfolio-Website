@@ -1,5 +1,5 @@
-<div *ngIf="!showSpinner">
-  <div class="carousel" *ngFor="let project of arrProjects">
+<div *ngIf="!showSpinner" class="carousel" >
+  <div *ngFor="let project of arrProjects">
     <app-project-card [project]="project"></app-project-card>
   </div>
 </div>

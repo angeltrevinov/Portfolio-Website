@@ -15,20 +15,23 @@ export class ProjectService {
   // -------------------------------------------------------
   constructor(private http: HttpClient) { }
   // -------------------------------------------------------
-  getProjects(
-    // method to get the projects and their details
-  ) {
+  getProjects() {
     return this.http.get( BACKENDPROJECT + '/');
   }
   // -------------------------------------------------------
-  getProjectsAdmin(
-    // method to get the projects for the admin preview
-  ) {
+  getProjectsAdmin() {
     return this.http.get(BACKENDPROJECT + '/admin');
   }
   // -------------------------------------------------------
+  getProjectDetails(
+    strIdProject: string
+  ) {
+    return this.http.get(
+      BACKENDPROJECT + '/' + strIdProject
+    );
+  }
+  // -------------------------------------------------------
   createProject(
-    // http method to request to create a new project
     strName: string,
     strDesc: string,
     strUrlGithub: string,
@@ -40,17 +43,7 @@ export class ProjectService {
     );
   }
   // -------------------------------------------------------
-  getProjectDetails(
-    // http method to request the details of a project
-    strIdProject: string
-  ) {
-    return this.http.get(
-      BACKENDPROJECT + '/' + strIdProject
-    );
-  }
-  // -------------------------------------------------------
   updateProject(
-    // http method to request an update of our project
     strIdProject: string,
     strName: string,
     strDesc: string,
@@ -69,7 +62,6 @@ export class ProjectService {
   }
   // -------------------------------------------------------
   deleteProject(
-    // http method to request the deletion of a project
     strIdProject: string
   ) {
     return this.http.delete(

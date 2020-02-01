@@ -23,6 +23,14 @@ export class ExperienceService {
     return this.http.get( BACKENDEXPERIENCE + '/admin');
   }
   // -------------------------------------------------------
+  getExperienceDetails(
+    strIdExperience: string
+  ) {
+    return this.http.get(
+      BACKENDEXPERIENCE + '/' + strIdExperience
+    );
+  }
+  // -------------------------------------------------------
   createExperience(
     strCompanyName: string,
     strPosition: string,
@@ -34,6 +42,30 @@ export class ExperienceService {
   ) {
     return this.http.post(
       BACKENDEXPERIENCE + '/',
+      {
+        strCompanyName,
+        strPosition,
+        strDesc,
+        boolWorkingNow,
+        startDate,
+        endDate,
+        strUrlCompanySite
+      }
+    );
+  }
+  // -------------------------------------------------------
+  updateExperience(
+    strIdExperience: string,
+    strCompanyName: string,
+    strPosition: string,
+    strDesc: string,
+    boolWorkingNow: boolean,
+    startDate: Date,
+    endDate: Date,
+    strUrlCompanySite: string
+  ) {
+    return this.http.put(
+      BACKENDEXPERIENCE + '/' + strIdExperience,
       {
         strCompanyName,
         strPosition,

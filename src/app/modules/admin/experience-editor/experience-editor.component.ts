@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatDatepickerInputEvent} from '@angular/material';
 import {ExperienceService} from '../../../service/experience.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 
 // =============== WORK EXPERIENCE EDITOR ==================
 /*
@@ -15,6 +15,8 @@ import {Router} from '@angular/router';
 })
 export class ExperienceEditorComponent implements OnInit {
 
+  editExperienceId: string;
+  editMode = false;
   experienceForm: FormGroup;
   minDateForEnd: Date;
   maxDateForEnd = new Date();
@@ -22,13 +24,25 @@ export class ExperienceEditorComponent implements OnInit {
 
   // -------------------------------------------------------
   constructor(
+    private route: ActivatedRoute,
     private router: Router,
     private experienceService: ExperienceService
   ) { }
   // TODO: ANGULAR METHODS
   // -------------------------------------------------------
   ngOnInit() {
+
+    // get params of route
+    this.route.paramMap.subscribe((result: ParamMap) => {
+      this.editExperienceId = result.get('id');
+    });
+
     this.createForm();
+
+    if (this.editExperienceId) {
+      this.editMode = true;
+      this.reqExperienceDetails();
+    }
   }
   // TODO: FORM METHODS
   // -------------------------------------------------------
@@ -85,7 +99,36 @@ export class ExperienceEditorComponent implements OnInit {
   endDateChange(event: MatDatepickerInputEvent<Date>) {
     this.maxDateForStart = event.value;
   }
+  // -------------------------------------------------------
+  populateForm(
+    editExperienceInfo: any
+  ) {
+    this.strCompanyName.setValue(editExperienceInfo.strCompanyName);
+    this.strPosition.setValue(editExperienceInfo.strPosition);
+    this.strDesc.setValue(editExperienceInfo.strDesc);
+    this.boolWorkingNow.setValue(editExperienceInfo.boolWorkingNow);
+    this.startDate.setValue(editExperienceInfo.startDate);
+    this.endDate.setValue(editExperienceInfo.endDate);
+    this.strUrlCompanySite.setValue(editExperienceInfo.strUrlCompanySite);
+
+    this.minDateForEnd = this.startDate.value;
+    if (!this.boolWorkingNow.value) {
+      this.maxDateForStart = this.endDate.value;
+    }
+
+    this.experienceForm.markAsUntouched();
+  }
   // TODO: HTTP METHODS
+  // -------------------------------------------------------
+  reqExperienceDetails() {
+    this.experienceService.getExperienceDetails(
+      this.editExperienceId
+    ).subscribe((result: any) => {
+      this.populateForm(result);
+    }, (error) => {
+      console.log(error);
+    });
+  }
   // -------------------------------------------------------
   onCreate() {
     if (
@@ -95,6 +138,23 @@ export class ExperienceEditorComponent implements OnInit {
       this.endDate.setValue(null);
     }
     this.experienceService.createExperience(
+      this.strCompanyName.value,
+      this.strPosition.value,
+      this.strDesc.value,
+      this.boolWorkingNow.value,
+      this.startDate.value,
+      this.endDate.value,
+      this.strUrlCompanySite.value
+    ).subscribe(() => {
+      this.router.navigate(['./admin']);
+    }, (error) => {
+      console.log(error);
+    });
+  }
+  // -------------------------------------------------------
+  onUpdateExperience() {
+    this.experienceService.updateExperience(
+      this.editExperienceId,
       this.strCompanyName.value,
       this.strPosition.value,
       this.strDesc.value,

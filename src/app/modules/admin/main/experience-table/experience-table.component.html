@@ -14,7 +14,7 @@
       <td class="col-4" style="vertical-align: middle;">{{ experience.strPosition }}</td>
       <td class="col-4" style="text-align: end">
         <button type="button" class="btn btn-warning">Edit</button>
-        <button type="button" class="btn btn-danger">Delete</button>
+        <button type="button" class="btn btn-danger" (click)="onDelete(experience._id)">Delete</button>
       </td>
     </tr>
     </tbody>

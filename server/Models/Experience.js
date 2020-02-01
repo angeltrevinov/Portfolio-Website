@@ -11,7 +11,8 @@ const experienceSchema = mongoose.Schema({
   strDesc: { type: String, required: true },
   boolWorkingNow: { type: Boolean, required: true },
   startDate: { type: Date, required: true },
-  endDate: { type: Date }
+  endDate: { type: Date },
+  strUrlCompanySite: { type: String }
 });
 
 module.exports = mongoose.model('Experience', experienceSchema);

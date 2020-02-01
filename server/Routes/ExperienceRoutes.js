@@ -44,11 +44,6 @@ router.get('/admin', checkAuth, function (req, res, next) {
 // ---------------------------------------------------------
 router.post('/', checkAuth, function (req, res, next) {
 
-  console.log(req.body.strCompanyName);
-  console.log(req.body.strPosition);
-  console.log(req.body.strDesc);
-  console.log(req.body.boolWorkingNow);
-  console.log(req.body.startDate);
   if(
     // Check that we have all the fields to register our
     //      experience
@@ -70,7 +65,8 @@ router.post('/', checkAuth, function (req, res, next) {
     strDesc: req.body.strDesc,
     boolWorkingNow: req.body.boolWorkingNow,
     startDate: req.body.startDate,
-    endDate: req.body.endDate
+    endDate: req.body.endDate,
+    strUrlCompanySite: req.body.strUrlCompanySite
   });
 
   newExperience.save().then((result) => {
@@ -78,6 +74,40 @@ router.post('/', checkAuth, function (req, res, next) {
   }).catch((error) => {
     return res.status(500).json(error);
   });
+});
+
+// TODO: DELETE WORK EXPERIENCE
+// ---------------------------------------------------------
+router.delete('/:id', checkAuth, function (req, res, next) {
+
+  if(
+    !req.params.id
+  ) {
+    return res.status(400).json({
+      message: 'missing work experience to delete'
+    });
+  }
+
+  Experience.findOneAndDelete({
+    _id: req.params.id,
+    strIdCreator: req.userData._id
+  }).then((result) => {
+    if(
+      //if we deleted something
+      result
+    ) {
+      return res.status(200).json({
+        message: 'Work Experience deleted successfully'
+      });
+    } else {
+      return res.status(404).json({
+        message: 'Work Experience could not be found'
+      });
+    }
+  }).catch((error) => {
+    return res.status(500).json(error);
+  });
+
 });
 
 module.exports = router;

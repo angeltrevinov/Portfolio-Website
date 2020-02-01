@@ -30,6 +30,7 @@ export class ExperienceService {
     boolWorkingNow: boolean,
     startDate: Date,
     endDate: Date,
+    strUrlCompanySite: string
   ) {
     return this.http.post(
       BACKENDEXPERIENCE + '/',
@@ -39,8 +40,17 @@ export class ExperienceService {
         strDesc,
         boolWorkingNow,
         startDate,
-        endDate
+        endDate,
+        strUrlCompanySite
       }
+    );
+  }
+  // -------------------------------------------------------
+  deleteExperience(
+    strIdExperience: string
+  ) {
+    return this.http.delete(
+      BACKENDEXPERIENCE + '/' + strIdExperience
     );
   }
 }

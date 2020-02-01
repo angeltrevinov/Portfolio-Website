@@ -17,8 +17,15 @@
         &nbsp; Now
       </span>
     </div>
-
     <!-- Link to the company's web page -->
-    <button type="button" class="btn btn-outline-primary">More Info</button>
+    <div class="row">
+      <div class="col" *ngIf="experience.strUrlCompanySite">
+        <a target="_blank" href="{{ experience.strUrlCompanySite }}">
+          <button type="button" class="btn btn-outline-primary">More Info</button>
+
+        </a>
+      </div>
+    </div>
+
   </div>
 </div>

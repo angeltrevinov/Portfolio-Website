@@ -1,7 +1,11 @@
-<div *ngIf="!showSpinner" class="carousel" >
+<div *ngIf="!showSpinner && arrProjects.length > 0" class="carousel">
   <div *ngFor="let project of arrProjects">
     <app-project-card [project]="project"></app-project-card>
   </div>
+</div>
+
+<div class="row" style="justify-content: center;" *ngIf="!showSpinner && this.arrProjects.length == 0">
+  <p>No projects to show</p>
 </div>
 
 <div class="row" style="justify-content: center;" *ngIf="showSpinner">

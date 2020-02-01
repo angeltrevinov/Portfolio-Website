@@ -59,7 +59,8 @@ export class ExperienceEditorComponent implements OnInit {
           Validators.required,
         ]
       }),
-      endDate: new FormControl(null)
+      endDate: new FormControl(null),
+      strUrlCompanySite: new FormControl(null)
     });
   }
   // -------------------------------------------------------
@@ -74,6 +75,8 @@ export class ExperienceEditorComponent implements OnInit {
   get startDate() { return this.experienceForm.get('startDate'); }
   // -------------------------------------------------------
   get endDate() { return this.experienceForm.get('endDate'); }
+  // -------------------------------------------------------
+  get strUrlCompanySite() { return this.experienceForm.get('strUrlCompanySite'); }
   // -------------------------------------------------------
   startDateChange(event: MatDatepickerInputEvent<Date>) {
     this.minDateForEnd = event.value;
@@ -97,7 +100,8 @@ export class ExperienceEditorComponent implements OnInit {
       this.strDesc.value,
       this.boolWorkingNow.value,
       this.startDate.value,
-      this.endDate.value
+      this.endDate.value,
+      this.strUrlCompanySite.value
     ).subscribe(() => {
       this.router.navigate(['./admin']);
     }, (error) => {

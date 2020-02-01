@@ -40,5 +40,17 @@ export class ExperienceTableComponent implements OnInit {
         console.log(error);
       });
   }
+  // -------------------------------------------------------
+  onDelete(
+    strExperienceId: string
+  ) {
+    this.experienceService.deleteExperience(
+      strExperienceId
+    ).subscribe(() => {
+      this.reqExperience();
+    }, (error) => {
+      console.log(error);
+    });
+  }
 
 }

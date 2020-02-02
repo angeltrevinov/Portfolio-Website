@@ -1,0 +1,13 @@
+.input-group-calendar {
+  border: 1px solid #ced4da;
+  height: 38px;
+}
+
+.button-row {
+  justify-content: end;
+  padding-right: 10px;
+}
+
+button {
+  margin: 5px;
+}

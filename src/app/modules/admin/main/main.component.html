@@ -17,7 +17,9 @@
         <h2>Projects</h2>
       </div>
       <div class="col add-button">
-        <button type="button" class="btn btn-secondary" [routerLink]="['./project']">&#43;</button>
+        <button type="button"
+                class="btn btn-secondary"
+                [routerLink]="['./project']">&#43;</button>
       </div>
     </div>
     <hr>
@@ -33,12 +35,31 @@
         <h2>Work Experience</h2>
       </div>
       <div class="col add-button">
-        <button type="button" class="btn btn-secondary" [routerLink]="['./experience']">&#43;</button>
+        <button type="button"
+                class="btn btn-secondary"
+                [routerLink]="['./experience']">&#43;</button>
       </div>
     </div>
     <hr>
     <!-- table -->
     <app-experience-table></app-experience-table>
+  </div>
+
+  <!-- EDUCATION MANAGER -->
+  <div class="container">
+    <!-- header -->
+    <div class="row">
+      <div class="col">
+        <h2>Education</h2>
+      </div>
+      <div class="col add-button">
+        <button class="btn btn-secondary"
+                type="button"
+                [routerLink]="['./education']">&#43;</button>
+      </div>
+    </div>
+    <hr>
+    <!-- table -->
   </div>
 
 </div>

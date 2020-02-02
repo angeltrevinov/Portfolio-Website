@@ -1,9 +1,6 @@
 const express = require('express');
 
 // ==================== EXPERIENCE ROUTES ==================
-/*
-* Manage the routes for work experience
-* */
 const router = express.Router();
 
 // TODO: MODELS

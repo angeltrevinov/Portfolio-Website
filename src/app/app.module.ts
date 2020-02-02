@@ -11,6 +11,7 @@ import {ProjectService} from './service/project.service';
 import {MatNativeDateModule} from '@angular/material';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {ExperienceService} from './service/experience.service';
+import {EducationService} from './service/education.service';
 
 // ====================== APP MODULE =======================
 /*
@@ -31,6 +32,7 @@ import {ExperienceService} from './service/experience.service';
     UserService,
     ProjectService,
     ExperienceService,
+    EducationService,
     AdminGuard,
     {
       provide: HTTP_INTERCEPTORS,

@@ -91,7 +91,6 @@ router.post('/', checkAuth, function (req, res, next) {
 
   const newProject = new Project({
     strName: req.body.strName,
-    strIdCreator: req.userData._id,
     strDesc: req.body.strDesc,
     strUrlGithub: req.body.strUrlGithub,
     strUrlHosting: req.body.strUrlHosting
@@ -151,7 +150,6 @@ router.delete('/:id', checkAuth, function (req, res, next) {
 
   Project.findOneAndDelete({
     _id: req.params.id,
-    strIdCreator: req.userData._id
   }).then((result) => {
     if(
       //if we have something then we deleted it

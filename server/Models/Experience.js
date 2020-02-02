@@ -6,7 +6,6 @@ const mongoose = require('mongoose');
 * */
 const experienceSchema = mongoose.Schema({
   strCompanyName: { type: String, required: true },
-  strIdCreator: { type: String, required: true },
   strPosition: { type: String, required: true },
   strDesc: { type: String, required: true },
   boolWorkingNow: { type: Boolean, required: true },

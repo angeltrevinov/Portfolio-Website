@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatDatepickerInputEvent} from '@angular/material';
+import {EducationService} from '../../../service/education.service';
 
 @Component({
   selector: 'app-education-editor',
@@ -16,7 +17,10 @@ export class EducationEditorComponent implements OnInit {
   maxDateForStart = new Date();
 
   // -------------------------------------------------------
-  constructor() { }
+  constructor(
+    private router: Router,
+    private educationService: EducationService
+  ) { }
   // TODO: ANGULAR METHODS
   // -------------------------------------------------------
   ngOnInit() {
@@ -79,6 +83,17 @@ export class EducationEditorComponent implements OnInit {
     ) {
       this.endDate.setValue(null);
     }
-
+    this.educationService.createEducation(
+      this.strSchoolName.value,
+      this.strTitle.value,
+      this.boolStudyingNow.value,
+      this.startDate.value,
+      this.endDate.value,
+      this.strUrlEducationSite.value
+    ).subscribe(() => {
+      this.router.navigate(['./admin']);
+    }, (error) => {
+      console.log(error);
+    });
   }
 }

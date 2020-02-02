@@ -26,10 +26,10 @@ router.post('/', checkAuth, function (req, res, next) {
   }
 
   const newEducation = new Education({
-    strSchoolName: req.body.strCompanyName,
+    strSchoolName: req.body.strSchoolName,
     strTitle: req.body.strTitle,
     boolStudyingNow: req.body.boolStudyingNow,
-    startDate: req.body.star,
+    startDate: req.body.startDate,
     endDate: req.body.endDate,
     strUrlEducationSite: req.body.strUrlEducationSite
   });

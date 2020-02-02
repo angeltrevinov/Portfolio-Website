@@ -86,7 +86,6 @@ router.post('/', checkAuth, function (req, res, next) {
 
   const newExperience = new Experience({
     strCompanyName: req.body.strCompanyName,
-    strIdCreator: req.userData._id,
     strPosition: req.body.strPosition,
     strDesc: req.body.strDesc,
     boolWorkingNow: req.body.boolWorkingNow,
@@ -116,7 +115,6 @@ router.put('/:id', checkAuth, function (req, res, next) {
 
   let json = {
     strCompanyName: req.body.strCompanyName,
-    strIdCreator: req.userData._id,
     strPosition: req.body.strPosition,
     strDesc: req.body.strDesc,
     boolWorkingNow: req.body.boolWorkingNow,
@@ -149,8 +147,7 @@ router.delete('/:id', checkAuth, function (req, res, next) {
   }
 
   Experience.findOneAndDelete({
-    _id: req.params.id,
-    strIdCreator: req.userData._id
+    _id: req.params.id
   }).then((result) => {
     if(
       //if we deleted something

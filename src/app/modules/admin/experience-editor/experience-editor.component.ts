@@ -153,6 +153,12 @@ export class ExperienceEditorComponent implements OnInit {
   }
   // -------------------------------------------------------
   onUpdateExperience() {
+    if (
+      // convert end date to null if still working there
+      this.boolWorkingNow.value
+    ) {
+      this.endDate.setValue(null);
+    }
     this.experienceService.updateExperience(
       this.editExperienceId,
       this.strCompanyName.value,

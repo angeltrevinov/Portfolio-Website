@@ -10,6 +10,35 @@ const Education = require('../Models/Education');
 // ---------------------------------------------------------
 const checkAuth = require('../middleware/check-auth');
 
+// TODO: GET - EDUCATION FOR PUBLIC
+// ---------------------------------------------------------
+router.get('/', function (req, res, next) {
+  Education.find().sort({
+    'boolStudyingNow': -1,
+    'startDate': -1
+  }).then((result) => {
+    return res.status(200).json(result);
+  }).catch((error) => {
+    return res.status(500).json(error);
+  });
+});
+
+// TODO: GET - EDUCATION FOR ADMIN
+// ---------------------------------------------------------
+router.get('/', checkAuth, function (req, res, next) {
+  Education.find().select({
+    'strSchoolName': 1,
+    'strTitle': 1
+  }).sort({
+    'boolStudyingNow': -1,
+    'startDate': -1
+  }).then((result) => {
+    return res.status(200).json(result);
+  }).catch(error => {
+    return res.status(500).json(error)
+  });
+});
+
 // TODO: POST - REGISTER EDUCATION
 // ---------------------------------------------------------
 router.post('/', checkAuth, function (req, res, next) {

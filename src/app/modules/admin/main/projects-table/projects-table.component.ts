@@ -21,8 +21,6 @@ export class ProjectsTableComponent implements OnInit {
   // -------------------------------------------------------
   ngOnInit() {
 
-    // initialize
-    this.showSpinner = true;
     this.arrProjects = [];
 
     this.reqProjects();

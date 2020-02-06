@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {ExperienceService} from '../../../../service/experience.service';
 
+// =============== EXPERIENCE SECTION ======================
+/*
+* Component to manage our cards for Experience
+* */
 @Component({
   selector: 'app-experience-section',
   templateUrl: './experience-section.component.html',

@@ -15,6 +15,14 @@ export class EducationService {
   // -------------------------------------------------------
   constructor(private http: HttpClient) { }
   // -------------------------------------------------------
+  getEducation() {
+    return this.http.get(BACKENDEDUCATION + '/');
+  }
+  // -------------------------------------------------------
+  getEducationAdmin() {
+    return this.http.get(BACKENDEDUCATION + '/admin');
+  }
+  // -------------------------------------------------------
   createEducation(
     strSchoolName: string,
     strTitle: string,
@@ -33,6 +41,14 @@ export class EducationService {
         endDate,
         strUrlEducationSite
       }
+    );
+  }
+  // -------------------------------------------------------
+  deleteEducation(
+    strIdEducation: string
+  ) {
+    return this.http.delete(
+      BACKENDEDUCATION + '/' + strIdEducation
     );
   }
 }

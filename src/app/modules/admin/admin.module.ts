@@ -11,6 +11,7 @@ import { ExperienceEditorComponent } from './experience-editor/experience-editor
 import {MatDatepickerModule} from '@angular/material';
 import { ExperienceTableComponent } from './main/experience-table/experience-table.component';
 import { EducationEditorComponent } from './education-editor/education-editor.component';
+import { TableEducationComponent } from './main/table-education/table-education.component';
 
 // ======================= ADMIN MODULE ====================
 /*
@@ -27,7 +28,8 @@ import { EducationEditorComponent } from './education-editor/education-editor.co
     ProjectEditorComponent,
     ExperienceEditorComponent,
     ExperienceTableComponent,
-    EducationEditorComponent
+    EducationEditorComponent,
+    TableEducationComponent
   ],
   imports: [
     CommonModule,

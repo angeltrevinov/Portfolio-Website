@@ -25,7 +25,7 @@ router.get('/', function (req, res, next) {
 
 // TODO: GET - EDUCATION FOR ADMIN
 // ---------------------------------------------------------
-router.get('/', checkAuth, function (req, res, next) {
+router.get('/admin', checkAuth, function (req, res, next) {
   Education.find().select({
     'strSchoolName': 1,
     'strTitle': 1
@@ -68,6 +68,33 @@ router.post('/', checkAuth, function (req, res, next) {
   }).catch((error) => {
     return res.status(500).json(error);
   });
+});
+
+// TODO: DELETE EDUCATION
+// ---------------------------------------------------------
+router.delete('/:id', checkAuth, function (req, res, next) {
+
+  if(!req.params.id) {
+    return res.status(400).json({
+      message: 'missing education to delete'
+    });
+  }
+
+  Education.findOneAndDelete({
+    _id: req.params.id
+  }).then((result) => {
+    if(result) {
+      return res.status(200).json({
+        message: 'Education deleted'
+      });
+    } else {
+      return  res.status(404).json({
+        message: 'Education could not be found'
+      });
+    }
+  }).catch((error) => {
+    return res.status(500).json(error);
+  })
 });
 
 module.exports = router;

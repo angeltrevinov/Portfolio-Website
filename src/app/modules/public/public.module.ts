@@ -13,6 +13,8 @@ import { AboutmeComponent } from './main/aboutme/aboutme.component';
 import { ProjectSectionComponent } from './main/project-section/project-section.component';
 import {SharedModule} from '../shared/shared.module';
 import { ExperienceSectionComponent } from './main/experience-section/experience-section.component';
+import { EducationSectionComponent } from './main/education-section/education-section.component';
+import { EducationCardComponent } from './main/education-section/education-card/education-card.component';
 
 // ========================== PUBLIC MODULE ================
 /*
@@ -30,6 +32,8 @@ import { ExperienceSectionComponent } from './main/experience-section/experience
     AboutmeComponent,
     ProjectSectionComponent,
     ExperienceSectionComponent,
+    EducationSectionComponent,
+    EducationCardComponent,
   ],
   imports: [
     CommonModule,

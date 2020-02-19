@@ -39,6 +39,33 @@ router.get('/admin', checkAuth, function (req, res, next) {
   });
 });
 
+// TODO: GET EDUCATION DETAILS
+// ---------------------------------------------------------
+router.get('/:id', function (req, res, next) {
+
+  if (
+    !req.params.id
+  ) {
+    return res.status(400).json({
+      message: 'missing education'
+    });
+  }
+
+  Education.findOne({
+    _id: req.params.id
+  }).then((result) => {
+    if (result) {
+     return res.status(200).json(result);
+    } else {
+      return res.status(404).json({
+        message: 'no education was found'
+      });
+    }
+  }).catch((error) => {
+    return res.status(500).json(error);
+  });
+});
+
 // TODO: POST - REGISTER EDUCATION
 // ---------------------------------------------------------
 router.post('/', checkAuth, function (req, res, next) {

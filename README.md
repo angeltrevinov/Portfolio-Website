@@ -1,7 +1,4 @@
-# Portfolio
-
-#Badges
-[![time tracker](https://wakatime.com/badge/github/angeltrevinov/Portfolio-Website.svg)](https://wakatime.com/badge/github/angeltrevinov/Portfolio-Website)
+# Portfolio [![time tracker](https://wakatime.com/badge/github/angeltrevinov/Portfolio-Website.svg)](https://wakatime.com/badge/github/angeltrevinov/Portfolio-Website)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.4.
 

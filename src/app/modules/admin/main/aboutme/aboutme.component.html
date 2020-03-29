@@ -1,0 +1,15 @@
+<form [formGroup]="aboutForm" (submit)="onUpdate()">
+
+  <!-- About modification -->
+  <h4>English Description</h4>
+  <div class="form-group row">
+    <div class="col-sm">
+      <p>{{ strAbout }}</p>
+    </div>
+    <div class="col-sm">
+      <textarea rows="3" class="form-control" formControlName="strFormAbout"></textarea>
+    </div>
+  </div>
+
+  <button class="btn btn-primary" type="submit" [disabled]="aboutForm.invalid">Update</button>
+</form>

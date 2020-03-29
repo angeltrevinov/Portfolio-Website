@@ -1,0 +1,18 @@
+.container {
+  margin-top: 15px;
+}
+
+.carousel {
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: row;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  padding-bottom: 10px;
+  background-color: #030A10;
+}

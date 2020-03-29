@@ -1,0 +1,116 @@
+<div class="container">
+  <!-- tittle -->
+  <div class="row">
+    <h1 *ngIf="!editMode">Registering New Work Experience</h1>
+    <h1 *ngIf="editMode">Editing {{ strCompanyName.value }}</h1>
+  </div>
+
+  <hr>
+
+  <form [formGroup]="experienceForm">
+    <!-- Company Name -->
+    <div class="form-group">
+      <label for="CompanyName">Company's Name</label>
+      <input type="text"
+             id="CompanyName"
+             placeholder="Company Org"
+             class="form-control" formControlName="strCompanyName">
+    </div>
+    <!-- Position -->
+    <div class="form-group">
+      <label for="Position">Position You Took</label>
+      <input type="text"
+             id="Position"
+             placeholder="Full Stack Developer"
+             class="form-control" formControlName="strPosition">
+    </div>
+    <!-- Description -->
+    <div class="form-group">
+      <label for="ExperienceDesc">Description of what you did at the company</label>
+      <textarea
+        id="ExperienceDesc"
+        cols="15" rows="3"
+        class="form-control"
+        formControlName="strDesc"></textarea>
+    </div>
+    <!-- Currently Working -->
+    <div class="form-group row">
+      <!-- Start date -->
+      <div class="col-md-6">
+        <label for="startDate">Date you started</label>
+        <div class="input-group" id="startDate">
+          <input matInput
+                 [matDatepicker]="startDatePicker"
+                 [max]="maxDateForStart"
+                 (dateInput)="startDateChange($event)"
+                 (dateChange)="startDateChange($event)"
+                 placeholder="mm/dd/yyyy"
+                 class="form-control"
+                 formControlName="startDate">
+          <div class="input-group-prepend">
+            <div class="input-group-calendar">
+              <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+            </div>
+          </div>
+          <mat-datepicker #startDatePicker></mat-datepicker>
+        </div>
+      </div>
+      <!-- End date -->
+      <div class="col-md-6">
+        <!-- end date picker -->
+        <div>
+          <label for="endDate">Date you ended</label>
+          <div class="input-group" id="endDate">
+            <input matInput
+                   [matDatepicker]="endDatePicker"
+                   [min]="minDateForEnd"
+                   [max]="maxDateForEnd"
+                   (dateInput)="endDateChange($event)"
+                   (dateChange)="endDateChange($event)"
+                   placeholder="mm/dd/yyyy"
+                   class="form-control"
+                   formControlName="endDate"
+                   [disabled]="boolWorkingNow.value">
+            <div class="input-group-prepend">
+              <div class="input-group-calendar">
+                <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+              </div>
+            </div>
+            <mat-datepicker #endDatePicker></mat-datepicker>
+          </div>
+        </div>
+        <!-- checkbox if we are still working there -->
+        <div style="padding-top: 5px">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="nowWorking" formControlName="boolWorkingNow">
+            <label class="form-check-label" for="nowWorking">
+              Currently Working here
+            </label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div style="padding-bottom: 15px;">
+      <label for="companyURL">Url to company site</label>
+      <input type="text"
+             id="companyURL"
+             placeholder="Company.org"
+             class="form-control" formControlName="strUrlCompanySite">
+    </div>
+
+    <div class="row button-row">
+      <button type="button" class="btn btn-danger" [routerLink]="['/admin']">Cancel</button>
+      <button *ngIf="!editMode"
+              type="button"
+              class="btn btn-primary"
+              [disabled]="experienceForm.invalid || (boolWorkingNow.value == false && endDate.value == null)"
+              (click)="onCreate()">Create</button>
+      <button *ngIf="editMode"
+              class="btn btn-primary"
+              [disabled]="(experienceForm.invalid || (boolWorkingNow.value == false && endDate.value == null)) || !this.experienceForm.touched"
+              (click)="onUpdateExperience()">Update</button>
+    </div>
+
+  </form>
+</div>

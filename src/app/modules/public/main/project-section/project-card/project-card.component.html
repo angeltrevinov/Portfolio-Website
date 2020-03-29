@@ -1,0 +1,24 @@
+<div class="card border-dark mb-3" style="width: 18rem;">
+  <!-- img with the screenshot of the project -->
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTAkIgzEEb9WjKS_qJblET3rE3AFJEGB0UHVmI4RBK32S7eIT8K" class="card-img-top" alt="...">
+  <div class="card-body">
+    <!-- NAME OF PROJECT -->
+    <h5 class="card-title"> {{ project.strName }}</h5>
+    <!-- DESCRIPTION OF PROJECT -->
+    <p class="card-text"> {{ project.strDesc }}</p>
+    <div class="row">
+      <!-- THE LINK TO WHERE THE PROJECT IS HOSTED -->
+      <div class="col" *ngIf="project.strUrlHosting">
+        <a target="_blank" href="{{ project.strUrlHosting }}">
+          <button type="button" class="btn btn-outline-primary">Try it</button>
+        </a>
+      </div>
+      <!-- THE LINK OF THE GITHUB REPO -->
+      <div class="col">
+        <a target="_blank" href="{{ project.strUrlGithub }}">
+          <button type="button" class="btn btn-outline-secondary">Github</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

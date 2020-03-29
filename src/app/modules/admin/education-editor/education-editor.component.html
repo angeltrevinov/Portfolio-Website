@@ -1,0 +1,104 @@
+<div class="container">
+  <!-- tittle -->
+  <div class="row">
+    <h1>Adding New Education</h1>
+  </div>
+
+  <hr>
+
+  <form [formGroup]="educationForm">
+    <!-- School Name -->
+    <div class="form-group">
+      <label for="SchoolName">Name of Educational Organization</label>
+      <input type="text"
+             id="SchoolName"
+             placeholder="Education Org."
+             class="form-control"
+             formControlName="strSchoolName">
+    </div>
+    <!-- Title -->
+    <div class="form-group">
+      <label for="Title">What were you studying?</label>
+      <input type="text"
+             id="Title"
+             placeholder="Bachelor of Science"
+             class="form-control"
+             formControlName="strTitle">
+    </div>
+    <!-- Currently Studying -->
+    <div class="form-group row">
+      <!-- Start date -->
+      <div class="col-md-6">
+        <label for="startDate">Date you started</label>
+        <div class="input-group" id="startDate">
+          <input matInput
+                 [matDatepicker]="startDatePicker"
+                 [max]="maxDateForStart"
+                 (dateInput)="startDateChange($event)"
+                 (dateChange)="startDateChange($event)"
+                 placeholder="mm/dd/yyyy"
+                 class="form-control"
+                 formControlName="startDate">
+          <div class="input-group-prepend">
+            <div class="input-group-calendar">
+              <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+            </div>
+          </div>
+          <mat-datepicker #startDatePicker></mat-datepicker>
+        </div>
+      </div>
+      <!-- End date -->
+      <div class="col-md-6">
+        <!-- end date picker -->
+        <div>
+          <label for="endDate">Date you ended</label>
+          <div class="input-group" id="endDate">
+            <input matInput
+                   [matDatepicker]="endDatePicker"
+                   [min]="minDateForEnd"
+                   [max]="maxDateForEnd"
+                   (dateInput)="endDateChange($event)"
+                   (dateChange)="endDateChange($event)"
+                   placeholder="mm/dd/yyyy"
+                   class="form-control"
+                   formControlName="endDate"
+                   [disabled]="boolStudyingNow.value">
+            <div class="input-group-prepend">
+              <div class="input-group-calendar">
+                <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+              </div>
+            </div>
+            <mat-datepicker #endDatePicker></mat-datepicker>
+          </div>
+        </div>
+        <!-- checkbox if we are still working there -->
+        <div style="padding-top: 5px">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="nowWorking" formControlName="boolStudyingNow">
+            <label class="form-check-label" for="nowWorking">
+              Currently Studying here
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Url to education -->
+    <div style="padding-bottom: 15px;">
+      <label for="schoolURL">Url to Education Site</label>
+      <input type="text"
+             id="schoolURL"
+             placeholder="Company.org"
+             class="form-control" formControlName="strUrlEducationSite">
+    </div>
+    <!-- buttons -->
+    <div class="row button-row">
+      <button type="button" class="btn btn-danger" [routerLink]="['/admin']">Cancel</button>
+      <button type="button"
+              class="btn btn-primary"
+              [disabled]="educationForm.invalid || (boolStudyingNow.value == false && endDate.value == null)"
+              (click)="onCreate()">Create</button>
+    </div>
+
+  </form>
+
+</div>

@@ -1,0 +1,31 @@
+<div class="card border-dark mb-3" style="width: 18rem;">
+  <div class="card-body">
+    <!-- Name of the company -->
+    <h5 class="card-title">{{ experience.strCompanyName }}</h5>
+    <h3 class="card-subtitle">{{ experience.strPosition }}</h3>
+    <!-- Description of what I did -->
+    <p class="card-text">{{ experience.strDesc }}</p>
+    <!-- Period of working there -->
+    <div class="row" style="padding-bottom: 20px; padding-left: 15px; padding-right: 15px;">
+      <span>
+        {{ startDate.toLocaleString('default', { month: 'short', year: 'numeric' }) }}&nbsp; -
+      </span>
+      <span *ngIf="!experience.boolWorkingNow">
+         &nbsp; {{ endDate.toLocaleString('default', { month: 'short', year: 'numeric' }) }}
+      </span>
+      <span *ngIf="experience.boolWorkingNow">
+        &nbsp; Now
+      </span>
+    </div>
+    <!-- Link to the company's web page -->
+    <div class="row">
+      <div class="col" *ngIf="experience.strUrlCompanySite">
+        <a target="_blank" href="{{ experience.strUrlCompanySite }}">
+          <button type="button" class="btn btn-outline-primary">More Info</button>
+
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>

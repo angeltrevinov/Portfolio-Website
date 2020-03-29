@@ -1,0 +1,26 @@
+<div class="page">
+  <form [formGroup]="loginForm" (submit)="onLogin()" class="FormContainer">
+    <!-- Email Control -->
+    <div class="form-group row">
+      <label for="Email" class="col-3 col-form-label">Email</label>
+      <div class="col-9">
+        <input id="Email"
+               type="text"
+               class="form-control"
+               formControlName="strEmail">
+      </div>
+    </div>
+    <!-- Password Control -->
+    <div class="form-group row">
+      <label for="Pass" class="col-3 col-form-label">Password</label>
+      <div class="col-9">
+        <input id="Pass"
+               type="password"
+               class="form-control"
+               formControlName="strPassword">
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-outline-primary" [disabled]="loginForm.invalid">Login</button>
+  </form>
+</div>

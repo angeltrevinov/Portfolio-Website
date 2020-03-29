@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 
+// ===================== APP COMPONENT =====================
+/*
+*  the main component, only used for our main router
+* */
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: '<router-outlet></router-outlet>'
 })
-export class AppComponent {
-  title = 'Portfolio';
-}
+export class AppComponent {}

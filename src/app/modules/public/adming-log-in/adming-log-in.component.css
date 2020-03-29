@@ -1,0 +1,21 @@
+.page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.col-form-label {
+  padding-top: 6px;
+}
+
+.FormContainer {
+  width: 80%;
+  padding: 20px;
+  background-color: darkgray;
+  border-radius: 20px;
+}
+
+.form-group {
+  padding-bottom: 10px;
+}

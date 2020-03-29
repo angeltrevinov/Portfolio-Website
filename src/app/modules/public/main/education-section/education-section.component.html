@@ -1,0 +1,13 @@
+<div *ngIf="!showSpinner && this.arrEducation.length > 0" class="carousel">
+  <div *ngFor="let education of arrEducation">
+    <app-education-card [education]="education"></app-education-card>
+  </div>
+</div>
+
+<div class="row" style="justify-content: center;" *ngIf="!showSpinner && this.arrEducation.length == 0">
+  <p>No education history to show</p>
+</div>
+
+<div class="row" style="justify-content: center;" *ngIf="showSpinner">
+  <app-spinner></app-spinner>
+</div>

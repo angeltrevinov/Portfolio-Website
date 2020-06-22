@@ -41,12 +41,14 @@ const userRoutes = require('./Routes/UserRoutes');
 const projectRoutes = require('./Routes/ProjectRoutes');
 const experienceRoutes = require('./Routes/ExperienceRoutes');
 const educationRoutes = require('./Routes/EducationRoutes');
+const technologyRoutes = require('./Routes/TechnologyRoute');
 
 // TODO: Routes for requests
 app.use('/api/admin', userRoutes);
 app.use('/api/project', projectRoutes);
 app.use('/api/experience', experienceRoutes);
 app.use('/api/education', educationRoutes);
+app.use('/api/tec', technologyRoutes);
 
 // TODO: Start the server
 // ---------------------------------------------------------

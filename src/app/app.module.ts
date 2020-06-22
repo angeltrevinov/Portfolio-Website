@@ -12,6 +12,8 @@ import {MatNativeDateModule} from '@angular/material';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {ExperienceService} from './service/experience.service';
 import {EducationService} from './service/education.service';
+import {TechnologyService} from './service/technology.service';
+import {RatingModule} from 'ng-starrating';
 
 // ====================== APP MODULE =======================
 /*
@@ -26,13 +28,15 @@ import {EducationService} from './service/education.service';
     AppRoutingModule,
     HttpClientModule,
     NoopAnimationsModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    RatingModule
   ],
   providers: [
     UserService,
     ProjectService,
     ExperienceService,
     EducationService,
+    TechnologyService,
     AdminGuard,
     {
       provide: HTTP_INTERCEPTORS,

@@ -1,0 +1,8 @@
+.button-row {
+  justify-content: end;
+  padding-right: 10px;
+}
+
+button {
+  margin: 5px;
+}

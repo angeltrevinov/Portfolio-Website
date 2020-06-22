@@ -4,6 +4,7 @@ import {MainComponent} from './main/main.component';
 import {ProjectEditorComponent} from './project-editor/project-editor.component';
 import {ExperienceEditorComponent} from './experience-editor/experience-editor.component';
 import {EducationEditorComponent} from './education-editor/education-editor.component';
+import {TechnologyEditorComponent} from './technology-editor/technology-editor.component';
 
 // ===================== ADMIN ROUTING =====================
 /*
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'experience', component: ExperienceEditorComponent },
   { path: 'experience/:id', component: ExperienceEditorComponent },
   { path: 'education', component: EducationEditorComponent },
-  { path: 'education/:id', component: EducationEditorComponent }
+  { path: 'education/:id', component: EducationEditorComponent },
+  { path: 'technologies', component: TechnologyEditorComponent }
 ];
 
 @NgModule({

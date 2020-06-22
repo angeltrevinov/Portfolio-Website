@@ -1,7 +1,7 @@
+require('dotenv').config();
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const config = require('../../config');
 
 // ==================== USER ROUTES ========================
 /*
@@ -65,7 +65,7 @@ router.post('/login', (req, res, next) => {
       const token = jwt.sign({
         strEmail: fetchUser.strEmail,
         _id: fetchUser._id
-      }, config.SECRETKEY, {expiresIn: '1day'});
+      }, process.env.SECRETKEY, {expiresIn: '1day'});
 
       return res.status(200).json({
         token: token

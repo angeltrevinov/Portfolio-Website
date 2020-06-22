@@ -97,6 +97,39 @@ router.post('/', checkAuth, function (req, res, next) {
   });
 });
 
+// TODO: PUT - EDIT EDUCATION EXPERIENCE
+// ---------------------------------------------------------
+router.put('/:id', checkAuth, function (req, res, next) {
+
+  if(
+    !req.params.id
+  ) {
+    return res.status(400).json({
+      message: 'No education experience was provided'
+    });
+  }
+
+  let json = {
+    strSchoolName: req.body.strSchoolName,
+    strTitle: req.body.strTitle,
+    boolStudyingNow: req.body.boolStudyingNow,
+    startDate: req.body.startDate,
+    endDate: req.body.endDate,
+    strUrlEducationSite: req.body.strUrlEducationSite
+  };
+
+  Education.findOneAndUpdate(
+    { _id: req.params.id},
+    json
+  ).then((result) => {
+    return res.status(200).json({
+      message: 'Education experience was updated'
+    });
+  }).catch((error) => {
+    return res.status(500).json(error);
+  });
+});
+
 // TODO: DELETE EDUCATION
 // ---------------------------------------------------------
 router.delete('/:id', checkAuth, function (req, res, next) {

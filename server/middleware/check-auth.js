@@ -1,5 +1,5 @@
+require('dotenv').config();
 const jwt = require('jsonwebtoken');
-const config = require('../../config');
 
 // ===================== AUTH MIDDLEWARE ===================
 /*
@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
     //get the token
     const token = req.headers.authorization.split(' ')[1];
     // decoded
-    const decodedToken = jwt.verify(token, config.SECRETKEY);
+    const decodedToken = jwt.verify(token, process.env.SECRETKEY);
     req.userData = {
       strEmail: decodedToken.strEmail,
       _id: decodedToken._id

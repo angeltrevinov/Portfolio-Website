@@ -16,7 +16,7 @@ import {LoginGuard} from '../../guards/login.guard';
 const routes: Routes = [
   { path: '', component: MainComponent },
   {
-    path: 'Adminlogin',
+    path: 'login',
     component: AdmingLogInComponent,
     canActivate: [LoginGuard]
   }

@@ -1,7 +1,8 @@
 <div class="container">
   <!-- tittle -->
   <div class="row">
-    <h1>Adding New Education</h1>
+    <h1 *ngIf="!editMode">Adding New Education</h1>
+    <h1 *ngIf="editMode">Editing {{ strSchoolName.value }}</h1>
   </div>
 
   <hr>
@@ -93,10 +94,16 @@
     <!-- buttons -->
     <div class="row button-row">
       <button type="button" class="btn btn-danger" [routerLink]="['/admin']">Cancel</button>
-      <button type="button"
+      <button *ngIf="!editMode"
+              type="button"
               class="btn btn-primary"
               [disabled]="educationForm.invalid || (boolStudyingNow.value == false && endDate.value == null)"
               (click)="onCreate()">Create</button>
+      <button *ngIf="editMode"
+              type="button"
+              class="btn btn-primary"
+              [disabled]="educationForm.invalid || (boolStudyingNow.value == false && endDate.value == null)"
+              (click)="onUpdateEducation()">Update</button>
     </div>
 
   </form>

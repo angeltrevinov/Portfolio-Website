@@ -44,6 +44,36 @@ export class EducationService {
     );
   }
   // -------------------------------------------------------
+  getEducationDetails(
+    strId: string
+  ) {
+    return this.http.get(
+      BACKENDEDUCATION + '/' + strId
+    );
+  }
+  // -------------------------------------------------------
+  updateEducation(
+    strIdEducation: string,
+    strSchoolName: string,
+    strTitle: string,
+    boolStudyingNow: boolean,
+    startDate: Date,
+    endDate: Date,
+    strUrlEducationSite: string
+  ) {
+    return this.http.put(
+      BACKENDEDUCATION + '/' + strIdEducation,
+      {
+        strSchoolName,
+        strTitle,
+        boolStudyingNow,
+        startDate,
+        endDate,
+        strUrlEducationSite
+      }
+    );
+  }
+  // -------------------------------------------------------
   deleteEducation(
     strIdEducation: string
   ) {

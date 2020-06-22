@@ -1,8 +1,8 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
-const config = require('../config');
 
 // ====================== INDEX ============================
 /*
@@ -27,7 +27,7 @@ app.use((req, res, next) => {
 // TODO: Mongo Connection
 // ---------------------------------------------------------
 mongoose.connect(
-  config.DATABASE_URL,
+  process.env.DATABASE_URL,
   { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false }
   ).then(() => {
     console.log('connected to the database');

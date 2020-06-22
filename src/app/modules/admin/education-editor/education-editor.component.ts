@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatDatepickerInputEvent} from '@angular/material';
 import {EducationService} from '../../../service/education.service';
@@ -11,6 +11,8 @@ import {EducationService} from '../../../service/education.service';
 })
 export class EducationEditorComponent implements OnInit {
 
+  editEducation: string;
+  editMode = false;
   educationForm: FormGroup;
   minDateForEnd: Date;
   maxDateForEnd = new Date();
@@ -18,13 +20,25 @@ export class EducationEditorComponent implements OnInit {
 
   // -------------------------------------------------------
   constructor(
+    private route: ActivatedRoute,
     private router: Router,
     private educationService: EducationService
   ) { }
   // TODO: ANGULAR METHODS
   // -------------------------------------------------------
   ngOnInit() {
+
+    // obtain the params of route
+    this.route.paramMap.subscribe((result: ParamMap) => {
+      this.editEducation = result.get('id');
+    });
+
     this.createForm();
+
+    if (this.editEducation) {
+      this.editMode = true;
+      this.reqEducationDetails();
+    }
   }
   // TODO: FORM METHODS
   // -------------------------------------------------------
@@ -74,7 +88,28 @@ export class EducationEditorComponent implements OnInit {
   endDateChange(event: MatDatepickerInputEvent<Date>) {
     this.maxDateForStart = event.value;
   }
+  // -------------------------------------------------------
+  populateForm(
+    editEducationInfo: any
+  ) {
+    this.strSchoolName.setValue(editEducationInfo.strSchoolName);
+    this.strTitle.setValue(editEducationInfo.strTitle);
+    this.boolStudyingNow.setValue(editEducationInfo.boolStudyingNow);
+    this.startDate.setValue(editEducationInfo.startDate);
+    this.endDate.setValue(editEducationInfo.endDate);
+    this.strUrlEducationSite.setValue(editEducationInfo.strUrlEducationSite);
+  }
   // TODO: HTTP METHODS
+  // -------------------------------------------------------
+  reqEducationDetails() {
+    this.educationService.getEducationDetails(
+      this.editEducation
+    ).subscribe((result: any) => {
+      this.populateForm(result);
+    }, (error) => {
+      console.log(error);
+    });
+  }
   // -------------------------------------------------------
   onCreate() {
     if (
@@ -84,6 +119,28 @@ export class EducationEditorComponent implements OnInit {
       this.endDate.setValue(null);
     }
     this.educationService.createEducation(
+      this.strSchoolName.value,
+      this.strTitle.value,
+      this.boolStudyingNow.value,
+      this.startDate.value,
+      this.endDate.value,
+      this.strUrlEducationSite.value
+    ).subscribe(() => {
+      this.router.navigate(['./admin']);
+    }, (error) => {
+      console.log(error);
+    });
+  }
+  // -------------------------------------------------------
+  onUpdateEducation() {
+    if (
+      // convert end date to null if still working there
+      this.boolStudyingNow.value
+    ) {
+      this.endDate.setValue(null);
+    }
+    this.educationService.updateEducation(
+      this.editEducation,
       this.strSchoolName.value,
       this.strTitle.value,
       this.boolStudyingNow.value,

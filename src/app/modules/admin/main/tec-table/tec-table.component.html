@@ -13,7 +13,7 @@
       <td class="col-4" style="vertical-align: middle;">{{ tec.strName }}</td>
       <td class="col-4" style="vertical-align: middle;">{{ tec.strTime }}</td>
       <td class="col-4" style="text-align: end">
-        <button type="button" class="btn btn-warning" [routerLink]="['./tecnologies', tec._id]">Edit</button>
+        <button type="button" class="btn btn-warning" [routerLink]="['./technologies', tec._id]">Edit</button>
         <button type="button" class="btn btn-danger" (click)="onDelete(tec._id)">Delete</button>
       </td>
     </tr>

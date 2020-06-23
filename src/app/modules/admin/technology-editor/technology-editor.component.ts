@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {TechnologyService} from '../../../service/technology.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {RatingChangeEvent} from 'angular-star-rating';
 
 // ==================== TECHNOLOGY EDITOR =====================
@@ -15,10 +15,13 @@ import {RatingChangeEvent} from 'angular-star-rating';
 })
 export class TechnologyEditorComponent implements OnInit {
 
+  editTecId: string;
+  editMode = false;
   technologyForm: FormGroup;
 
   // -------------------------------------------------------
   constructor(
+    private route: ActivatedRoute,
     private router: Router,
     private technologyService: TechnologyService
   ) { }
@@ -26,7 +29,17 @@ export class TechnologyEditorComponent implements OnInit {
   // TODO: ANGULAR METHODS
   // -------------------------------------------------------
   ngOnInit() {
+    // get params of route
+    this.route.paramMap.subscribe((result: ParamMap) => {
+      this.editTecId = result.get('id');
+    });
+
     this.createForm();
+
+    if (this.editTecId){
+      this.editMode = true;
+      this.reqTecDetails();
+    }
   }
   // TODO: FORM METHODS
   // -------------------------------------------------------
@@ -54,6 +67,7 @@ export class TechnologyEditorComponent implements OnInit {
   // -------------------------------------------------------
   onRatingChange($event: RatingChangeEvent) {
     this.intLevel.setValue($event.rating);
+    this.technologyForm.markAsTouched();
   }
   // -------------------------------------------------------
   get strName() { return this.technologyForm.get('strName'); }
@@ -61,7 +75,26 @@ export class TechnologyEditorComponent implements OnInit {
   get intLevel() { return this.technologyForm.get('intLevel'); }
   // -------------------------------------------------------
   get strTime() { return this.technologyForm.get('strTime'); }
+  // -------------------------------------------------------
+  populateForm(
+    editTecInfo: any
+  ) {
+    this.strName.setValue(editTecInfo.strName);
+    this.intLevel.setValue(editTecInfo.intLevel);
+    this.strTime.setValue(editTecInfo.strTime);
+    this.technologyForm.markAsUntouched();
+  }
   // TODO: HTTP METHODS
+  // -------------------------------------------------------
+  reqTecDetails() {
+    this.technologyService.getTechnologyDetails(
+      this.editTecId
+    ).subscribe( (result: any) => {
+      this.populateForm(result);
+    }, (error) => {
+      console.log(error);
+    });
+  }
   // -------------------------------------------------------
   onCreateProject() {
     this.technologyService.createTechnology(
@@ -69,6 +102,19 @@ export class TechnologyEditorComponent implements OnInit {
       this.intLevel.value,
       this.strTime.value
     ).subscribe((result) => {
+      this.router.navigate(['/admin']);
+    }, (error) => {
+      console.log(error);
+    });
+  }
+  // -------------------------------------------------------
+  onUpdateTec() {
+    this.technologyService.updateTechnology(
+      this.editTecId,
+      this.strName.value,
+      this.intLevel.value,
+      this.strTime.value
+    ).subscribe(() => {
       this.router.navigate(['/admin']);
     }, (error) => {
       console.log(error);

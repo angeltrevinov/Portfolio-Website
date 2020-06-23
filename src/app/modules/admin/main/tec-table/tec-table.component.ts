@@ -40,6 +40,11 @@ export class TecTableComponent implements OnInit {
   }
   // -------------------------------------------------------
   onDelete(strId: string) {
-    console.log(strId);
+    this.technologyService.deleteTechnology(strId)
+      .subscribe(() => {
+        this.reqTechnology();
+      }, (error) => {
+        console.log(error);
+      });
   }
 }

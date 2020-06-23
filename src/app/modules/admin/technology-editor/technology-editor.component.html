@@ -1,7 +1,8 @@
 <div class="container">
   <!-- tittle -->
   <div class="row">
-    <h1>Registering New Technology</h1>
+    <h1 *ngIf="!editMode">Registering New Technology</h1>
+    <h1 *ngIf="editMode">Updating {{ strName.value }}</h1>
   </div>
 
   <hr>
@@ -46,7 +47,8 @@
     <!-- Button Row -->
     <div class="row button-row">
       <button type="button" class="btn btn-danger" [routerLink]="['/admin']">Cancel</button>
-      <button type="button"  class="btn btn-primary" [disabled]="technologyForm.invalid" (click)="onCreateProject()">Create</button>
+      <button *ngIf="!editMode" type="button"  class="btn btn-primary" [disabled]="technologyForm.invalid" (click)="onCreateProject()">Create</button>
+      <button *ngIf="editMode" type="button" class="btn btn-primary" [disabled]="technologyForm.invalid || !this.technologyForm.touched" (click)="onUpdateTec()">Update</button>
     </div>
   </form>
 </div>

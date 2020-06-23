@@ -23,6 +23,12 @@ export class TechnologyService {
     return this.http.get( BACKENDTECHNOLOGY + '/admin');
   }
   // -------------------------------------------------------
+  getTechnologyDetails(strId: string) {
+    return this.http.get(
+      BACKENDTECHNOLOGY + '/' + strId
+    );
+  }
+  // -------------------------------------------------------
   createTechnology(
     strName: string,
     intLevel: number,
@@ -35,6 +41,28 @@ export class TechnologyService {
         intLevel,
         strTime
       }
+    );
+  }
+  // -------------------------------------------------------
+  updateTechnology(
+    strId: string,
+    strName: string,
+    intLevel: number,
+    strTime: string
+  ) {
+    return this.http.put(
+      BACKENDTECHNOLOGY + '/' + strId,
+      {
+        strName,
+        intLevel,
+        strTime
+      }
+    );
+  }
+  // -------------------------------------------------------
+  deleteTechnology(strId: string) {
+    return this.http.delete(
+      BACKENDTECHNOLOGY + '/' + strId
     );
   }
 }

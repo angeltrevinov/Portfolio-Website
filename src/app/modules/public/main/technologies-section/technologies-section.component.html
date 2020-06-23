@@ -1,0 +1,13 @@
+<div *ngIf="!showSpinner && arrTec.length > 0" class="carousel">
+  <div *ngFor="let tec of arrTec">
+    <app-technology-card [tec]="tec"></app-technology-card>
+  </div>
+</div>
+
+<div class="row" style="justify-content: center;" *ngIf="!showSpinner && this.arrTec.length == 0">
+  <p>No technologies to show</p>
+</div>
+
+<div class="row" style="justify-content: center;" *ngIf="showSpinner">
+  <app-spinner></app-spinner>
+</div>

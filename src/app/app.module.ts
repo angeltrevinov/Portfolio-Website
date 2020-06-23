@@ -13,7 +13,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {ExperienceService} from './service/experience.service';
 import {EducationService} from './service/education.service';
 import {TechnologyService} from './service/technology.service';
-import {RatingModule} from 'ng-starrating';
+import {StarRatingModule} from 'angular-star-rating';
 
 // ====================== APP MODULE =======================
 /*
@@ -29,7 +29,7 @@ import {RatingModule} from 'ng-starrating';
     HttpClientModule,
     NoopAnimationsModule,
     MatNativeDateModule,
-    RatingModule
+    StarRatingModule.forRoot()
   ],
   providers: [
     UserService,

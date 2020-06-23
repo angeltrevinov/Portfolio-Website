@@ -1,0 +1,32 @@
+<!-- TABLE -->
+<div class="table-responsive">
+  <table class="table table-hover" *ngIf="!showSpinner && arrTec.length > 0">
+    <thead class="thead-dark">
+    <tr>
+      <th class="col-4">Name</th>
+      <th class="col-4">Years of Exp.</th>
+      <th class="col-4"></th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let tec of arrTec">
+    <tr>
+      <td class="col-4" style="vertical-align: middle;">{{ tec.strName }}</td>
+      <td class="col-4" style="vertical-align: middle;">{{ tec.strTime }}</td>
+      <td class="col-4" style="text-align: end">
+        <button type="button" class="btn btn-warning" [routerLink]="['./tecnologies', tec._id]">Edit</button>
+        <button type="button" class="btn btn-danger" (click)="onDelete(tec._id)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- no projects have been added -->
+<div class="row" style="justify-content: center;" *ngIf="!showSpinner && arrTec.length == 0">
+  <p>no education history has been added</p>
+</div>
+
+<!-- SPINNER -->
+<div class="row" style="justify-content: center;" *ngIf="showSpinner">
+  <app-spinner></app-spinner>
+</div>

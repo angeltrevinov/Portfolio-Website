@@ -13,6 +13,8 @@ import { ExperienceTableComponent } from './main/experience-table/experience-tab
 import { EducationEditorComponent } from './education-editor/education-editor.component';
 import { TableEducationComponent } from './main/table-education/table-education.component';
 import { TechnologyEditorComponent } from './technology-editor/technology-editor.component';
+import {StarRatingModule} from 'angular-star-rating';
+import { TecTableComponent } from './main/tec-table/tec-table.component';
 
 // ======================= ADMIN MODULE ====================
 /*
@@ -31,14 +33,16 @@ import { TechnologyEditorComponent } from './technology-editor/technology-editor
     ExperienceTableComponent,
     EducationEditorComponent,
     TableEducationComponent,
-    TechnologyEditorComponent
+    TechnologyEditorComponent,
+    TecTableComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     ReactiveFormsModule,
     SharedModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    StarRatingModule
   ]
 })
 export class AdminModule { }

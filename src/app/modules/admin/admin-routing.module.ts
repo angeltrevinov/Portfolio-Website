@@ -23,7 +23,8 @@ const routes: Routes = [
   { path: 'experience/:id', component: ExperienceEditorComponent },
   { path: 'education', component: EducationEditorComponent },
   { path: 'education/:id', component: EducationEditorComponent },
-  { path: 'technologies', component: TechnologyEditorComponent }
+  { path: 'technologies', component: TechnologyEditorComponent },
+  { path: 'technologies/:id', component: TechnologyEditorComponent }
 ];
 
 @NgModule({

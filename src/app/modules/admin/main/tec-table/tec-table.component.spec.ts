@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LangFrameCardComponent } from './lang-frame-card.component';
+import { TecTableComponent } from './tec-table.component';
 
-describe('LangFrameCardComponent', () => {
-  let component: LangFrameCardComponent;
-  let fixture: ComponentFixture<LangFrameCardComponent>;
+describe('TecTableComponent', () => {
+  let component: TecTableComponent;
+  let fixture: ComponentFixture<TecTableComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LangFrameCardComponent ]
+      declarations: [ TecTableComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LangFrameCardComponent);
+    fixture = TestBed.createComponent(TecTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

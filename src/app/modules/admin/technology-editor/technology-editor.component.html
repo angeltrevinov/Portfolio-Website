@@ -18,17 +18,35 @@
     </div>
     <!-- Tec level -->
     <div class="form-group">
-      <label for="TecLevel">Technology's Experience</label>
-      <star-rating
-        id="TecLevel"
-        value="4"
-        totalstars="4"
-        checkedcolor="red"
-        uncheckedcolor="black"
-        size="24px"
-        readonly="false"
-        (rate)="onRate($event)">
-      </star-rating>
+      <label>Technology's Experience</label>
+      <div class="row">
+        <div class="col-3">
+          <input class="form-control" type="number" formControlName="intLevel" min="0" max="4" step="0.5" onKeyDown="return false">
+        </div>
+        <div class="col-3">
+          <star-rating
+            size="large"
+            [rating]="intLevel.value"
+            [showHalfStars]="true"
+            [numOfStars]="4"
+            (ratingChange)="onRatingChange($event)"
+          ></star-rating>
+        </div>
+      </div>
+    </div>
+    <!-- For Year's of experience -->
+    <div class="form-group">
+      <label for="YearTec">Year's of Experience</label>
+      <input type="text"
+             id="YearTec"
+             class="form-control"
+             placeholder="2 months, 1 year, 1 year and 3 months..."
+             formControlName="strTime">
+    </div>
+    <!-- Button Row -->
+    <div class="row button-row">
+      <button type="button" class="btn btn-danger" [routerLink]="['/admin']">Cancel</button>
+      <button type="button"  class="btn btn-primary" [disabled]="technologyForm.invalid" (click)="onCreateProject()">Create</button>
     </div>
   </form>
 </div>

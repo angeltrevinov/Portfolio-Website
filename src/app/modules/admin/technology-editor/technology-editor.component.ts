@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {TechnologyService} from '../../../service/technology.service';
 import {Router} from '@angular/router';
-import {StarRatingComponent} from 'ng-starrating';
+import {RatingChangeEvent} from 'angular-star-rating';
 
 // ==================== TECHNOLOGY EDITOR =====================
 /*
@@ -52,6 +52,10 @@ export class TechnologyEditorComponent implements OnInit {
     });
   }
   // -------------------------------------------------------
+  onRatingChange($event: RatingChangeEvent) {
+    this.intLevel.setValue($event.rating);
+  }
+  // -------------------------------------------------------
   get strName() { return this.technologyForm.get('strName'); }
   // -------------------------------------------------------
   get intLevel() { return this.technologyForm.get('intLevel'); }
@@ -69,12 +73,5 @@ export class TechnologyEditorComponent implements OnInit {
     }, (error) => {
       console.log(error);
     });
-  }
-  // -------------------------------------------------------
-  onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}) {
-    alert(`Old Value:${$event.oldValue},
-      New Value: ${$event.newValue},
-      Checked Color: ${$event.starRating.checkedcolor},
-      Unchecked Color: ${$event.starRating.uncheckedcolor}`);
   }
 }

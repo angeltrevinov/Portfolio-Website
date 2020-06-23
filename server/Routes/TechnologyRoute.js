@@ -10,6 +10,18 @@ const Technology = require('../Models/Technology');
 // ---------------------------------------------------------
 const checkAuth = require('../middleware/check-auth');
 
+// TODO: GET - GET TECHNOLOGIES FOR PUBLIC
+// ---------------------------------------------------------
+router.get('/', function (req, res, next) {
+  Technology.find().sort({
+    'intLevel': -1
+  }).then((result) => {
+    return res.status(200).json(result);
+  }).catch((error) => {
+    return res.status(500).json(error);
+  });
+});
+
 // TODO: GET - GET TECHNOLOGIES FOR ADMIN
 // ---------------------------------------------------------
 router.get('/admin', checkAuth, function (req, res, next) {

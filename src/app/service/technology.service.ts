@@ -15,6 +15,10 @@ export class TechnologyService {
   // -------------------------------------------------------
   constructor(private http: HttpClient) { }
   // -------------------------------------------------------
+  getTechnologies() {
+    return this.http.get(BACKENDTECHNOLOGY + '/');
+  }
+  // -------------------------------------------------------
   getTechnologiesAdmin() {
     return this.http.get( BACKENDTECHNOLOGY + '/admin');
   }
